@@ -344,6 +344,17 @@ $authString = base64_encode("$public:$secret");
 
 $name = $fname . ' ' . $lname;
 
+
+//if ($reg_method = "drive"){
+	$list_num = 44;
+	$api_url = 'https://api.simplycast.com/crossmarketer/18047/inbound/930 HTTP/1.1';
+//}
+//else {
+//	$list_num = 20;
+//	$api_url = 'https://api.simplycast.com/crossmarketer/12853/inbound/881 HTTP/1.1';
+//}
+
+
 $fields = array(	
    'contact' => array(
 		'fields' => array (
@@ -417,7 +428,7 @@ $fields = array(
 			),
 		),
   		'lists' => array(
-			0 => 20,
+			0 => $list_num,
 			),
   ),
 
@@ -453,14 +464,7 @@ curl_close($curl);
 $json = json_decode($result);
 $registrant_id = $json->contact->id;
 
-if ($reg_method = "drive"){
-	$list_num = 44;
-	$api_url = 'https://api.simplycast.com/crossmarketer/18047/inbound/930 HTTP/1.1';
-}
-else {
-	$list_num = 20;
-	$api_url = 'https://api.simplycast.com/crossmarketer/12853/inbound/881 HTTP/1.1';
-}
+
 
 $size = $json->contact->lists->{$list_num}->size;	
 

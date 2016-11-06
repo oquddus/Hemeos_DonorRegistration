@@ -12,9 +12,9 @@ var banner,
 	umdLocalizationDefine;
 
 banner = "/*!\n" +
-	" * jQuery Validation Plugin v<%= pkg.version %>\n" +
+	" * jQuery Validation Plugin\n" +
 	" *\n" +
-	" * <%= pkg.homepage %>\n" +
+	" * removed\n" +
 	" *\n" +
 	" * Copyright (c) <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n" +
 	" * Released under the <%= _.pluck(pkg.licenses, 'type').join(', ') %> license\n" +
@@ -71,9 +71,9 @@ grunt.initConfig( {
 	uglify: {
 		options: {
 			preserveComments: false,
-			banner: "/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - " +
+			banner: "/*! <%= pkg.title || pkg.name %> - " +
 				"<%= grunt.template.today('m/d/yyyy') %>\n" +
-				" * <%= pkg.homepage %>\n" +
+				" * removed \n" +
 				" * Copyright (c) <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>;" +
 				" Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %> */\n"
 		},
@@ -96,7 +96,7 @@ grunt.initConfig( {
 			options: {
 				mode: "zip",
 				level: 1,
-				archive: "dist/<%= pkg.name %>-<%= pkg.version %>.zip",
+				archive: "dist/<%= pkg.name %>.zip",
 				pretty: true
 			},
 			src: [

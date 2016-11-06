@@ -14,25 +14,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Include Stylesheets -->
-		<link rel="stylesheet" href="js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="js/jquery-ui-1.12.0/jquery-ui.min.css">
-		<link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css">
+		<link rel="stylesheet" href="../js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../js/jquery-ui-1.12.0/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css">
 
 		<!-- Include the jQuery library -->
-		<script src="js/jquery-ui-1.12.0/external/jquery/jquery.js"></script>
-		<script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
-        <script src="js/jquery.maskedinput.min.js"></script>
-        <script src="js/jquery-validation-1.15.1/dist/jquery.validate.js"></script>
-		<script src="js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="../js/jquery-ui-1.12.0/external/jquery/jquery.js"></script>
+		<script src="../js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+        <script src="../js/jquery.maskedinput.min.js"></script>
+        <script src="../js/jquery-validation-1.15.1/dist/jquery.validate.js"></script>
+		<script src="../js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"></script>
 		<!-- Include the jQuery Mobile library -->
-		<script src="js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="../js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<!-- Include other library -->
-        <script src="js/main.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
 
 	       
        <!-- Smarty Streets -->
@@ -72,6 +72,7 @@
 		<noscript><img height="1" width="1" style="display:none"
 		src="https://www.facebook.com/tr?id=131978573838798&ev=PageView&noscript=1"
 		/></noscript>
+		<!-- DO NOT MODIFY -->
 		<!-- End Facebook Pixel Code -->
 		
 		<!-- Google Analytics Tracking Code -->
@@ -80,13 +81,10 @@
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
 		  ga('create', 'UA-68410579-1', 'auto');
 		  ga('send', 'pageview');
-		</script>
-		
-		<!-- Hotjar Tracking Code for www.hemeos.com --> 
-		<script> 
-			(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:319654,hjsv:5}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv='); 
+
 		</script>
 		
 		
@@ -102,13 +100,13 @@
     <div class="row">
         <div class="social img">
             <div class="pull-right">
-                 <a href="https://www.instagram.com/hemeosllc/"><img src="img/instagarm.png" alt=""></a>
+                 <a href="https://www.instagram.com/hemeosllc/"><img src="../img/instagarm.png" alt=""></a>
             </div>
             <div class="pull-right">
-                 <a href="https://twitter.com/hemeosllc"><img src="img/twiterr.png" alt=""></a>
+                 <a href="https://twitter.com/hemeosllc"><img src="../img/twiterr.png" alt=""></a>
             </div>
             <div class="pull-right">
-                 <a href="https://www.facebook.com/Hemeos/"><img src="img/facebook.png" alt=""></a>
+                 <a href="https://www.facebook.com/Hemeos/"><img src="../img/facebook.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -121,7 +119,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         
         <div class="navbar-header">
-          <a href="https://www.hemeos.com/"><img src="img/logo.png" alt="" class="logo" align="middle"></a>
+          <a href="https://www.hemeos.com/"><img src="../img/logo.png" alt="" class="logo" align="middle"></a>
           <button type="button" class="navbar-toggle collapsed ui-corner-all ui-btn-inline ui-btn-b ui-mini" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -151,7 +149,7 @@
     </div>
                 <div class="col-md-6 col-md-offset-3 ">		
           
-			    <form data-ajax="false" id="hemeosform" method="post" action="submit.php">
+			    <form data-ajax="false" id="hemeosform" method="post" action="donor_register.php">
 				      <div data-role="header" data-theme="c">
 	   					<h1></h1>
 	 				  </div>
@@ -179,14 +177,20 @@
 					  	<label for="lname">Last Name</label>
 					  	<input class="form-control" type="text" name="lname" id="lname" data-clear-btn="true" placeholder="Surname">
 					  </div>
-					  <div class="col-md-6">
-					  	<label for="email">Email</label>
-					  	<input class="form-control" type="email" name="email" id="email" data-clear-btn="true" placeholder="Email">
+					   <div class="col-md-6">
+					  	<label for="pname">Preffered Name</label>
+					  	<input class="form-control" type="text" name="pname" id="pname" data-clear-btn="true" placeholder="Preferred Name">
 					  </div>
 					  <div class="col-md-6">
 					  	<label for="phone">Phone Number</label>
 					  	<input class="form-control" type="text" name="phone" id="phone" data-clear-btn="true" placeholder="(___) ___-____">
 					  </div>
+					  <div class="col-md-12">
+					  	<label for="email">Email</label>
+					  	<input class="form-control" type="email" name="email" id="email" data-clear-btn="true" placeholder="Email">
+					  </div>
+					  
+					   
 					</div><p>&nbsp;</p>
 													  
 				    <div class="form-group">
@@ -441,18 +445,18 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>1. Stroke or TIA (Transient Ischemic Attack)?</p>
-								<input type="radio" name="tia" id="tia-yes" value="yes" style="opacity:0">
+								<input type="radio" name="tia" id="tia-yes" value="1" style="opacity:0">
 								<label for="tia-yes">Yes</label>
-								<input type="radio" name="tia" id="tia-no" value="no" style="opacity:0">
+								<input type="radio" name="tia" id="tia-no" value="0" style="opacity:0">
 								<label for="tia-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>2. Diagnosed with cancer in the past 5 years?</p>
-								<input type="radio" name="cancer" id="cancer-yes" value="yes" style="opacity:0">
+								<input type="radio" name="cancer" id="cancer-yes" value="1" style="opacity:0">
 								<label for="cancer-yes">Yes</label>
-								<input type="radio" name="cancer" id="cancer-no" value="no" style="opacity:0">
+								<input type="radio" name="cancer" id="cancer-no" value="0" style="opacity:0">
 								<label for="cancer-no">No</label>
 							</fieldset>
 						</div>
@@ -465,27 +469,27 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>3. Chemotherapy or radiation therapy?(Radioactive Iodine treatment for thyroid cancer is acceptable. Localized bead radiation for prostate or breast cancer is acceptable)</p>
-								<input type="radio" name="therapy" id="therapy-yes" value="yes" style="opacity:0">
+								<input type="radio" name="therapy" id="therapy-yes" value="1" style="opacity:0">
 								<label for="therapy-yes">Yes</label>
-								<input type="radio" name="therapy" id="therapy-no" value="no" style="opacity:0">
+								<input type="radio" name="therapy" id="therapy-no" value="0" style="opacity:0">
 								<label for="therapy-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>4. Chronic, on-going, significant pain to areas of the spine, back, or neck that interferes with you daily activities AND requires regular chiropractic treatments or regular physical therapy?</p>
-								<input type="radio" name="pain" id="pain-yes" value="yes" style="opacity:0">
+								<input type="radio" name="pain" id="pain-yes" value="1" style="opacity:0">
 								<label for="pain-yes">Yes</label>
-								<input type="radio" name="pain" id="pain-no" value="no" style="opacity:0">
+								<input type="radio" name="pain" id="pain-no" value="0" style="opacity:0">
 								<label for="pain-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>5. Prescription pain medication?</p>
-								<input type="radio" name="medication" id="medication-yes" value="yes" style="opacity:0">
+								<input type="radio" name="medication" id="medication-yes" value="1" style="opacity:0">
 								<label for="medication-yes">Yes</label>
-								<input type="radio" name="medication" id="medication-no" value="no" style="opacity:0">
+								<input type="radio" name="medication" id="medication-no" value="0" style="opacity:0">
 								<label for="medication-no">No</label>
 							</fieldset>
 						</div>
@@ -498,36 +502,36 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>6. Anxiety or depression?</p>
-								<input type="radio" name="depression" id="depression-yes" value="yes" style="opacity:0">
+								<input type="radio" name="depression" id="depression-yes" value="1" style="opacity:0">
 								<label for="depression-yes">Yes</label>
-								<input type="radio" name="depression" id="depression-no" value="no" style="opacity:0">
+								<input type="radio" name="depression" id="depression-no" value="0" style="opacity:0">
 								<label for="depression-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>7. Autism or Asperger’s syndrome?</p>
-								<input type="radio" name="autism" id="autism-yes" value="yes" style="opacity:0">
+								<input type="radio" name="autism" id="autism-yes" value="1" style="opacity:0">
 								<label for="autism-yes">Yes</label>
-								<input type="radio" name="autism" id="autism-no" value="no" style="opacity:0">
+								<input type="radio" name="autism" id="autism-no" value="0" style="opacity:0">
 								<label for="autism-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>8. ADHD or ADD?</p>
-								<input type="radio" name="add" id="add-yes" value="yes" style="opacity:0">
+								<input type="radio" name="add" id="add-yes" value="1" style="opacity:0">
 								<label for="add-yes">Yes</label>
-								<input type="radio" name="add" id="add-no" value="no" style="opacity:0">
+								<input type="radio" name="add" id="add-no" value="0" style="opacity:0">
 								<label for="add-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>9. High Cholestrol?</p>
-								<input type="radio" name="cholesterol" id="cholesterol-yes" value="yes" style="opacity:0">
+								<input type="radio" name="cholesterol" id="cholesterol-yes" value="1" style="opacity:0">
 								<label for="cholesterol-yes">Yes</label>
-								<input type="radio" name="cholesterol" id="cholesterol-no" value="no" style="opacity:0">
+								<input type="radio" name="cholesterol" id="cholesterol-no" value="0" style="opacity:0">
 								<label for="cholesterol-no">No</label>
 							</fieldset>
 						</div>
@@ -540,18 +544,18 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>10. High blood pressure or hypertension?</p>
-								<input type="radio" name="bloodpressure" id="bloodpressure-yes" value="yes" style="opacity:0">
+								<input type="radio" name="bloodpressure" id="bloodpressure-yes" value="1" style="opacity:0">
 								<label for="bloodpressure-yes">Yes</label>
-								<input type="radio" name="bloodpressure" id="bloodpressure-no" value="no" style="opacity:0">
+								<input type="radio" name="bloodpressure" id="bloodpressure-no" value="0" style="opacity:0">
 								<label for="bloodpressure-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>11. Long term infectious disease?</p>
-								<input type="radio" name="infectiousdisease" id="infectiousdisease-yes" value="yes" style="opacity:0">
+								<input type="radio" name="infectiousdisease" id="infectiousdisease-yes" value="1" style="opacity:0">
 								<label for="infectiousdisease-yes">Yes</label>
-								<input type="radio" name="infectiousdisease" id="infectiousdisease-no" value="no" style="opacity:0">
+								<input type="radio" name="infectiousdisease" id="infectiousdisease-no" value="0" style="opacity:0">
 								<label for="infectiousdisease-no">No</label>
 							</fieldset>
 						</div>
@@ -570,207 +574,207 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>1. Coronary artery disease (CAD) or coronary heart disease (CHD) Carotid artery disease Peripheral artery disease (PAD) Heart attack Irregular heartbeat (arrhythmia)</p>
-								<input type="radio" name="heartdisease" id="heartdisease-yes" value="yes" style="opacity:0">
+								<input type="radio" name="heartdisease" id="heartdisease-yes" value="1" style="opacity:0">
 								<label for="heartdisease-yes">Yes</label>
-								<input type="radio" name="heartdisease" id="heartdisease-no" value="no" style="opacity:0">
+								<input type="radio" name="heartdisease" id="heartdisease-no" value="0" style="opacity:0">
 								<label for="heartdisease-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>2. Lupus</p>
-								<input type="radio" name="lupus" id="lupus-yes" value="yes" style="opacity:0">
+								<input type="radio" name="lupus" id="lupus-yes" value="1" style="opacity:0">
 								<label for="lupus-yes">Yes</label>
-								<input type="radio" name="lupus" id="lupus-no" value="no" style="opacity:0">
+								<input type="radio" name="lupus" id="lupus-no" value="0" style="opacity:0">
 								<label for="lupus-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>3. Psoriasis</p>
-								<input type="radio" name="psoriasis" id="psoriasis-yes" value="yes" style="opacity:0">
+								<input type="radio" name="psoriasis" id="psoriasis-yes" value="1" style="opacity:0">
 								<label for="psoriasis-yes">Yes</label>
-								<input type="radio" name="psoriasis" id="psoriasis-no" value="no" style="opacity:0">
+								<input type="radio" name="psoriasis" id="psoriasis-no" value="0" style="opacity:0">
 								<label for="psoriasis-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>4. Arthritis</p>
-								<input type="radio" name="arthritis" id="arthritis-yes" value="yes" style="opacity:0">
+								<input type="radio" name="arthritis" id="arthritis-yes" value="1" style="opacity:0">
 								<label for="arthritis-yes">Yes</label>
-								<input type="radio" name="arthritis" id="arthritis-no" value="no" style="opacity:0">
+								<input type="radio" name="arthritis" id="arthritis-no" value="0" style="opacity:0">
 								<label for="arthritis-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>5. Sjogren's Syndrome</p>
-								<input type="radio" name="sjogrens" id="sjogrens-yes" value="yes" style="opacity:0">
+								<input type="radio" name="sjogrens" id="sjogrens-yes" value="1" style="opacity:0">
 								<label for="sjogrens-yes">Yes</label>
-								<input type="radio" name="sjogrens" id="sjogrens-no" value="no" style="opacity:0">
+								<input type="radio" name="sjogrens" id="sjogrens-no" value="0" style="opacity:0">
 								<label for="sjogrens-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>6. Multiple Sclerosis</p>
-								<input type="radio" name="sclerosis" id="sclerosis-yes" value="yes" style="opacity:0">
+								<input type="radio" name="sclerosis" id="sclerosis-yes" value="1" style="opacity:0">
 								<label for="sclerosis-yes">Yes</label>
-								<input type="radio" name="sclerosis" id="sclerosis-no" value="no" style="opacity:0">
+								<input type="radio" name="sclerosis" id="sclerosis-no" value="0" style="opacity:0">
 								<label for="sclerosis-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>7. Fibromyalgia</p>
-								<input type="radio" name="fibromyalgia" id="fibromyalgia-yes" value="yes" style="opacity:0">
+								<input type="radio" name="fibromyalgia" id="fibromyalgia-yes" value="1" style="opacity:0">
 								<label for="fibromyalgia-yes">Yes</label>
-								<input type="radio" name="fibromyalgia" id="fibromyalgia-no" value="no" style="opacity:0">
+								<input type="radio" name="fibromyalgia" id="fibromyalgia-no" value="0" style="opacity:0">
 								<label for="fibromyalgia-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>8. Chronic Fatigue Syndrome</p>
-								<input type="radio" name="chronicfatigue" id="chronicfatigue-yes" value="yes" style="opacity:0">
+								<input type="radio" name="chronicfatigue" id="chronicfatigue-yes" value="1" style="opacity:0">
 								<label for="chronicfatigue-yes">Yes</label>
-								<input type="radio" name="chronicfatigue" id="chronicfatigue-no" value="no" style="opacity:0">
+								<input type="radio" name="chronicfatigue" id="chronicfatigue-no" value="0" style="opacity:0">
 								<label for="chronicfatigue-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>9. Addinson's Disease</p>
-								<input type="radio" name="addinsons" id="addinsons-yes" value="yes" style="opacity:0">
+								<input type="radio" name="addinsons" id="addinsons-yes" value="1" style="opacity:0">
 								<label for="addinsons-yes">Yes</label>
-								<input type="radio" name="addinsons" id="addinsons-no" value="no" style="opacity:0">
+								<input type="radio" name="addinsons" id="addinsons-no" value="0" style="opacity:0">
 								<label for="addinsons-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>10. Thyroid Disease</p>
-								<input type="radio" name="thyroid" id="thyroid-yes" value="yes" style="opacity:0">
+								<input type="radio" name="thyroid" id="thyroid-yes" value="1" style="opacity:0">
 								<label for="thyroid-yes">Yes</label>
-								<input type="radio" name="thyroid" id="thyroid-no" value="no" style="opacity:0">
+								<input type="radio" name="thyroid" id="thyroid-no" value="0" style="opacity:0">
 								<label for="thyroid-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>11. Seizures</p>
-								<input type="radio" name="seizure" id="seizure-yes" value="yes" style="opacity:0">
+								<input type="radio" name="seizure" id="seizure-yes" value="1" style="opacity:0">
 								<label for="seizure-yes">Yes</label>
-								<input type="radio" name="seizure" id="seizure-no" value="no" style="opacity:0">
+								<input type="radio" name="seizure" id="seizure-no" value="0" style="opacity:0">
 								<label for="seizure-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>12. Kidney Stones</p>
-								<input type="radio" name="kidneystones" id="kidneystones-yes" value="yes" style="opacity:0">
+								<input type="radio" name="kidneystones" id="kidneystones-yes" value="1" style="opacity:0">
 								<label for="kidneystones-yes">Yes</label>
-								<input type="radio" name="kidneystones" id="kidneystones-no" value="no" style="opacity:0">
+								<input type="radio" name="kidneystones" id="kidneystones-no" value="0" style="opacity:0">
 								<label for="kidneystones-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>13. Asthma</p>
-								<input type="radio" name="asthma" id="asthma-yes" value="yes" style="opacity:0">
+								<input type="radio" name="asthma" id="asthma-yes" value="1" style="opacity:0">
 								<label for="asthma-yes">Yes</label>
-								<input type="radio" name="asthma" id="asthma-no" value="no" style="opacity:0">
+								<input type="radio" name="asthma" id="asthma-no" value="0" style="opacity:0">
 								<label for="asthma-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>14. Cirrhosis or any other liver disease</p>
-								<input type="radio" name="cirrhosis" id="cirrhosis-yes" value="yes" style="opacity:0">
+								<input type="radio" name="cirrhosis" id="cirrhosis-yes" value="1" style="opacity:0">
 								<label for="cirrhosis-yes">Yes</label>
-								<input type="radio" name="cirrhosis" id="cirrhosis-no" value="no" style="opacity:0">
+								<input type="radio" name="cirrhosis" id="cirrhosis-no" value="0" style="opacity:0">
 								<label for="cirrhosis-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>15. Ankylosing Disease</p>
-								<input type="radio" name="ankylosing" id="ankylosing-yes" value="yes" style="opacity:0">
+								<input type="radio" name="ankylosing" id="ankylosing-yes" value="1" style="opacity:0">
 								<label for="ankylosing-yes">Yes</label>
-								<input type="radio" name="ankylosing" id="ankylosing-no" value="no" style="opacity:0">
+								<input type="radio" name="ankylosing" id="ankylosing-no" value="0" style="opacity:0">
 								<label for="ankylosing-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>16. HIV or AIDS</p>
-								<input type="radio" name="hiv" id="hiv-yes" value="yes" style="opacity:0">
+								<input type="radio" name="hiv" id="hiv-yes" value="1" style="opacity:0">
 								<label for="hiv-yes">Yes</label>
-								<input type="radio" name="hiv" id="hiv-no" value="no" style="opacity:0">
+								<input type="radio" name="hiv" id="hiv-no" value="0" style="opacity:0">
 								<label for="hiv-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>17. Hepatitis B or C</p>
-								<input type="radio" name="hepatitis" id="hepatitis-yes" value="yes" style="opacity:0">
+								<input type="radio" name="hepatitis" id="hepatitis-yes" value="1" style="opacity:0">
 								<label for="hepatitis-yes">Yes</label>
-								<input type="radio" name="hepatitis" id="hepatitis-no" value="no" style="opacity:0">
+								<input type="radio" name="hepatitis" id="hepatitis-no" value="0" style="opacity:0">
 								<label for="hepatitis-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>18. Diabetes</p>
-								<input type="radio" name="diabetes" id="diabetes-yes" value="yes" style="opacity:0">
+								<input type="radio" name="diabetes" id="diabetes-yes" value="1" style="opacity:0">
 								<label for="diabetes-yes">Yes</label>
-								<input type="radio" name="diabetes" id="diabetes-no" value="no" style="opacity:0">
+								<input type="radio" name="diabetes" id="diabetes-no" value="0" style="opacity:0">
 								<label for="diabetes-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>19. An Aneurysm</p>
-								<input type="radio" name="aneurysm" id="aneurysm-yes" value="yes" style="opacity:0">
+								<input type="radio" name="aneurysm" id="aneurysm-yes" value="1" style="opacity:0">
 								<label for="aneurysm-yes">Yes</label>
-								<input type="radio" name="aneurysm" id="aneurysm-no" value="no" style="opacity:0">
+								<input type="radio" name="aneurysm" id="aneurysm-no" value="0" style="opacity:0">
 								<label for="aneurysm-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>20. Any Blood Clotting Disorder</p>
-								<input type="radio" name="bloodclot" id="bloodclot-yes" value="yes" style="opacity:0">
+								<input type="radio" name="bloodclot" id="bloodclot-yes" value="1" style="opacity:0">
 								<label for="bloodclot-yes">Yes</label>
-								<input type="radio" name="bloodclot" id="bloodclot-no" value="no" style="opacity:0">
+								<input type="radio" name="bloodclot" id="bloodclot-no" value="0" style="opacity:0">
 								<label for="bloodclot-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>21. Hemophilia</p>
-								<input type="radio" name="hemophilia" id="hemophilia-yes" value="yes" style="opacity:0">
+								<input type="radio" name="hemophilia" id="hemophilia-yes" value="1" style="opacity:0">
 								<label for="hemophilia-yes">Yes</label>
-								<input type="radio" name="hemophilia" id="hemophilia-no" value="no" style="opacity:0">
+								<input type="radio" name="hemophilia" id="hemophilia-no" value="0" style="opacity:0">
 								<label for="hemophilia-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>22.Anemia</p>
-								<input type="radio" name="anemia" id="anemia-yes" value="yes" style="opacity:0">
+								<input type="radio" name="anemia" id="anemia-yes" value="1" style="opacity:0">
 								<label for="anemia-yes">Yes</label>
-								<input type="radio" name="anemia" id="anemia-no" value="no" style="opacity:0">
+								<input type="radio" name="anemia" id="anemia-no" value="0" style="opacity:0">
 								<label for="anemia-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>23. Allergies?</p>
-								<input type="radio" name="allergies" id="allergies-yes" value="yes" style="opacity:0">
+								<input type="radio" name="allergies" id="allergies-yes" value="1" style="opacity:0">
 								<label for="allergies-yes">Yes</label>
-								<input type="radio" name="allergies" id="allergies-no" value="no" style="opacity:0">
+								<input type="radio" name="allergies" id="allergies-no" value="0" style="opacity:0">
 								<label for="allergies-no">No</label>
 							</fieldset>
 						</div>
@@ -786,34 +790,34 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>24. Have you smoked at least 100 cigarettes in your lifetime?</p>
-								<input type="radio" name="smoker" id="smoker-yes" value="yes" style="opacity:0">
+								<input type="radio" name="smoker" id="smoker-yes" value="1" style="opacity:0">
 								<label for="smoker-yes">Yes</label>
-								<input type="radio" name="smoker" id="smoker-no" value="no" style="opacity:0">
+								<input type="radio" name="smoker" id="smoker-no" value="0" style="opacity:0">
 								<label for="smoker-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>25. Has anyone in your immediate family (parents, siblings, or grandparents) been diagnosed with Alzheimer’s?</p>
-								<input type="radio" name="alzheimer" id="alzheimer-yes" value="yes" style="opacity:0">
+								<input type="radio" name="alzheimer" id="alzheimer-yes" value="1" style="opacity:0">
 								<label for="alzheimer-yes">Yes</label>
-								<input type="radio" name="alzheimer" id="alzheimer-no" value="no" style="opacity:0">
+								<input type="radio" name="alzheimer" id="alzheimer-no" value="0" style="opacity:0">
 								<label for="alzheimer-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>26. Have you ever had a concussion?</p>
-								<input type="radio" name="concussion" id="concussion-yes" value="yes" style="opacity:0">
+								<input type="radio" name="concussion" id="concussion-yes" value="1" style="opacity:0">
 								<label for="concussion-yes">Yes</label>
-								<input type="radio" name="concussion" id="concussion-no" value="no" style="opacity:0">
+								<input type="radio" name="concussion" id="concussion-no" value="0" style="opacity:0">
 								<label for="concussion-no">No</label>
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
 						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>If yes, please specify date of concussion?<p>
-								<input type="text" name="concussiondate" id="concussiondate" value="">
+								<input type="text" name="concussiondate" id="concussiondate" value=" " placeholder= "YYYY-MM-DD">
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
@@ -832,9 +836,9 @@
 							<hr class="style1">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p><b>Hemeos works with Healthcare partners to find cures for many different diseases and disorders. Can we follow up with you to ask you to provide additional information if needed?</b></p>
-								<input type="radio" name="followup" id="followup-yes" value="yes" style="opacity:0">
+								<input type="radio" name="followup" id="followup-yes" value="1" style="opacity:0">
 								<label for="followup-yes">Yes</label>
-								<input type="radio" name="followup" id="followup-no" value="no" style="opacity:0">
+								<input type="radio" name="followup" id="followup-no" value="0" style="opacity:0">
 								<label for="followup-no">No</label>
 							</fieldset>
 						</div>
@@ -872,9 +876,9 @@
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>I have read an understand the Research Consent Release and agree to its terms.</p>
-								<input type="radio" name="researchconsent" id="researchconsent-yes" value="yes" style="opacity:0">
+								<input type="radio" name="researchconsent" id="researchconsent-yes" value="1" style="opacity:0">
 								<label for="researchconsent-yes">  I Agree </label>
-								<input type="radio" name="researchconsent" id="researchconsent-no" value="no" style="opacity:0">
+								<input type="radio" name="researchconsent" id="researchconsent-no" value="0" style="opacity:0">
 								<label for="researchconsent-no">I Disagree</label>
 							</fieldset>
 						</div>
@@ -922,7 +926,7 @@
 							<div class="col-md-12 sec-row">
 								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 									<p>I have read and understand the Donor Registration and consent to register with Hemeos and agree to its term.</p>
-									<input type="radio" name="donorconsent" id="donorconsent-yes" value="yes" style="opacity:0">
+									<input type="radio" name="donorconsent" id="donorconsent-yes" value="1" style="opacity:0">
 									<label for="donorconsent-yes">  I Agree </label>
 								</fieldset>
 							</div>
@@ -1002,7 +1006,7 @@
                         </div>
                        	<div class="col-md-12 sec-row">
 								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-									<input type="radio" name="agreement1" id="agreement1" value="yes" style="opacity:0">
+									<input type="radio" name="agreement1" id="agreement1" value="1" style="opacity:0">
 									<label for="agreement1">Yes</label>
 								</fieldset>
 						</div>
@@ -1068,4 +1072,3 @@
 			
 </body>
 </html>
-

@@ -188,8 +188,6 @@ $reg_method = $db -> quote($_POST['reg_method']);
 $barcode = $db -> quote($_POST['barcode']); //Only for drive registration
 
 //Additional variable metrics
-//$age = floor((time() - strtotime($dob)) / 31556926);
-//$bmi = 703*($weight/pow($height,2));
 $age = 30;
 $bmi = 100;
 

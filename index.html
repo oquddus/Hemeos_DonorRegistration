@@ -14,25 +14,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Include Stylesheets -->
-		<link rel="stylesheet" href="../js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../js/jquery-ui-1.12.0/jquery-ui.min.css">
-		<link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" href="../js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css">
+		<link rel="stylesheet" href="js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="js/jquery-ui-1.12.0/jquery-ui.min.css">
+		<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css">
 
 		<!-- Include the jQuery library -->
-		<script src="../js/jquery-ui-1.12.0/external/jquery/jquery.js"></script>
-		<script src="../js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
-        <script src="../js/jquery.maskedinput.min.js"></script>
-        <script src="../js/jquery-validation-1.15.1/dist/jquery.validate.js"></script>
-		<script src="../js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="js/jquery-ui-1.12.0/external/jquery/jquery.js"></script>
+		<script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+        <script src="js/jquery.maskedinput.min.js"></script>
+        <script src="js/jquery-validation-1.15.1/dist/jquery.validate.js"></script>
+		<script src="js/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="js/jQuery-slimScroll-1.3.8/jquery.slimscroll.min.js"></script>
 		<!-- Include the jQuery Mobile library -->
-		<script src="../js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="js/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<!-- Include other library -->
-        <script src="../js/main.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
 	       
        <!-- Smarty Streets -->
@@ -87,6 +88,94 @@
 
 		</script>
 		
+		<script>
+			function yesnoCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('ifYes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('ifYes').style.display = 'none';
+			    }
+			};
+		</script>	
+		
+				<script>
+			//Dyanmic Fields
+			function registryCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('registry_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('registry_if_yes').style.display = 'none';
+			    }
+			};
+			function cancerCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('cancer_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('cancer_if_yes').style.display = 'none';
+			    }
+			};
+			function diseaseCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('infectiousdisease_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('infectiousdisease_if_yes').style.display = 'none';
+			    }
+			};
+			function seizureCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('seizure_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('seizure_if_yes').style.display = 'none';
+			    }
+			};
+			function heartCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('heartdisease_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('heartdisease_if_yes').style.display = 'none';
+			    }
+			};
+			function diabetesCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('diabetes_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('diabetes_if_yes').style.display = 'none';
+			    }
+			};
+			function allergiesCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('allergies_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('allergies_if_yes').style.display = 'none';
+			    }
+			};
+			function autoimmuneCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('autoimmune_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('autoimmune_if_yes').style.display = 'none';
+			    }
+			};
+			function concussionCheck(id) {
+			    if (document.getElementById(id).value == 1) {
+			        document.getElementById('concussions_if_yes').style.display = 'block';
+			    }
+			    if (document.getElementById(id).value == 0) {
+			    	document.getElementById('concussions_if_yes').style.display = 'none';
+			    }
+			};
+			
+			
+		</script>	
 		
     </head>
     
@@ -100,13 +189,13 @@
     <div class="row">
         <div class="social img">
             <div class="pull-right">
-                 <a href="https://www.instagram.com/hemeosllc/"><img src="../img/instagarm.png" alt=""></a>
+                 <a href="https://www.instagram.com/hemeosllc/"><img src="img/instagarm.png" alt=""></a>
             </div>
             <div class="pull-right">
-                 <a href="https://twitter.com/hemeosllc"><img src="../img/twiterr.png" alt=""></a>
+                 <a href="https://twitter.com/hemeosllc"><img src="img/twiterr.png" alt=""></a>
             </div>
             <div class="pull-right">
-                 <a href="https://www.facebook.com/Hemeos/"><img src="../img/facebook.png" alt=""></a>
+                 <a href="https://www.facebook.com/Hemeos/"><img src="img/facebook.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -119,7 +208,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         
         <div class="navbar-header">
-          <a href="https://www.hemeos.com/"><img src="../img/logo.png" alt="" class="logo" align="middle"></a>
+          <a href="https://www.hemeos.com/"><img src="img/logo.png" alt="" class="logo" align="middle"></a>
           <button type="button" class="navbar-toggle collapsed ui-corner-all ui-btn-inline ui-btn-b ui-mini" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -141,15 +230,12 @@
     </nav>
 </div>
 
-
-<body>
-
 	<div class="col-md-12 form-title">
         <h4> Hemeos <span>Donor Application</span></h4>        
     </div>
                 <div class="col-md-6 col-md-offset-3 ">		
           
-			    <form data-ajax="false" id="hemeosform" method="post" action="donor_register.php">
+			    <form data-ajax="false" id="hemeosform" method="post" action="submit.php">
 				      <div data-role="header" data-theme="c">
 	   					<h1></h1>
 	 				  </div>
@@ -159,11 +245,9 @@
 					<!-- STEP 1 -->
 					<fieldset id="step1">
 					<ol class="progtrckr" data-progtrckr-steps="5">
-					    <li class="progtrckr-todo">Step1</li>
-					    <li class="progtrckr-todo">Step2</li>
-					    <li class="progtrckr-todo">Step3</li>
-					    <li class="progtrckr-todo">Step4</li>
-					    <li class="progtrckr-todo">Step5</li>
+					    <li class="progtrckr-done">Step 1</li>
+					    <li class="progtrckr-todo">Step 2</li>
+					    <li class="progtrckr-todo">Step 3</li>
 					</ol>		  
 					<p>&nbsp;</p>
 				    <div class="form-group">
@@ -178,19 +262,21 @@
 					  	<input class="form-control" type="text" name="lname" id="lname" data-clear-btn="true" placeholder="Surname">
 					  </div>
 					   <div class="col-md-6">
-					  	<label for="pname">Preffered Name</label>
+					  	<label for="pname">Preferred Name</label>
 					  	<input class="form-control" type="text" name="pname" id="pname" data-clear-btn="true" placeholder="Preferred Name">
 					  </div>
+					  <div class="col-md-6">
+                            <label for="dob">Date of Birth</label>
+                            <input type="text" class="form-control" id="dob" name="dob">
+                      </div>
 					  <div class="col-md-6">
 					  	<label for="phone">Phone Number</label>
 					  	<input class="form-control" type="text" name="phone" id="phone" data-clear-btn="true" placeholder="(___) ___-____">
 					  </div>
-					  <div class="col-md-12">
+					  <div class="col-md-6">
 					  	<label for="email">Email</label>
 					  	<input class="form-control" type="email" name="email" id="email" data-clear-btn="true" placeholder="Email">
-					  </div>
-					  
-					   
+					  </div>					  
 					</div><p>&nbsp;</p>
 													  
 				    <div class="form-group">
@@ -222,63 +308,10 @@
                         </div>
                         
                     </div><p>&nbsp;</p>
-                    									
+                      
                     <div class="form-group">				  
-					<p style="font-size: 135%">Alternate Contact Information</p>
-					<hr class="style1">		
-                    Please provide contact information for a close friend or relative who will know how to reach you if you become a match in the future. This person will be contacted only if we cannot reach you using the contact information you provided above. <p>&nbsp;</p>
-					  <div class="col-md-6">
-					  	<label for="altfname">First Name</label>
-					  	<input class="form-control" type="text" name="altfname" id="altfname" data-clear-btn="true" placeholder="First Name">
-					  </div>
-					  <div class="col-md-6">
-					  	<label for="altlname">Last Name</label>
-					  	<input class="form-control" type="text" name="altlname" id="altlname" data-clear-btn="true" placeholder="Surname">
-					  </div>
-					<div class="col-md-6">
-					  	<label for="altemail">Email</label>
-					  	<input class="form-control" type="email" name="altemail" id="altemail" data-clear-btn="true" placeholder="Email">
-					  </div>
-					  <div class="col-md-6">
-					  	<label for="altphone">Phone Number</label>
-					  	<input class="form-control" type="text" name="altphone" id="altphone" data-clear-btn="true" placeholder="(___) ___-____">
-					  </div>
-					  <div class="col-md-12">
-                         <label for="lang" class="select">Relationship to You</label>
-                         <select name="altrelationship" id="altrelationship" class="form-control" >
-	                         <option></option>
-	                         <option value="father">Father</option>
-	                         <option value="mother">Mother</option>
-	                         <option value="son">Son</option>
-	                         <option value="daughter">Daughter</option>
-	                         <option value="spouse">Spouse/Partner</option>
-	                         <option value="sibling">Sibling</option>
-	                         <option value="relative">Relative</option>
-	                         <option value="friend">Friend</option>
-	                         <option value="other">Other</option>
-                         </select> 
-                       </div>           		
-            		</div>
-            		 <input type="button" id="next1" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
-            		</fieldset>
-            		
-            		<!-- STEP 2 -->
-            		<fieldset id="step2">
-            		<ol class="progtrckr" data-progtrckr-steps="5">
-					    <li class="progtrckr-done">Step1</li>
-					    <li class="progtrckr-todo">Step2</li>
-					    <li class="progtrckr-todo">Step3</li>
-					    <li class="progtrckr-todo">Step4</li>
-					    <li class="progtrckr-todo">Step5</li>
-					</ol>		  
-					<p>&nbsp;</p>
-           			<p style="font-size: 135%">Personal Information</p>
+					<p style="font-size: 135%">Personal Information</p>
 					<hr class="style1">	
-				    <div class="form-group">
-                        <div class="col-md-12">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" name="dob">
-                        </div>
                         <div class="col-md-6 sec-row">
                             <label for="sex" class="select">Sex</label>
                             <select name="sex" id="sex" class="form-control" >
@@ -332,8 +365,9 @@
                         </div>
                         <div class="col-md-12 sec-row">               
                             <label for="weight">Weight</label>
-                            <input type="range" name="weight" id="weight" value="" min="0" max="500" class="form-control">
+                            <input type="range" name="weight" id="weight" min="0" max="500" class="form-control">
                         </div>
+                       <!-- 
                         <div class="col-md-12 sec-row">
                             <label for="lang" class="select">Preferred Language</label>
                             <select name="lang" id="lang" class="form-control" >
@@ -363,25 +397,7 @@
                                 <option value="welsh">Welsh</option>
                             </select>
                         </div>
-                        <div class="col-md-12 sec-row">
-                            <label for="reference" class="select">How did you hear about Hemeos?</label>
-                            <select name="reference" id="reference" class="form-control" >
-                                 <option></option>
-                                 <option value="howard_university_flyer">Howard University Flyer</option>
-								 <option value="howard_sporting_event">Howard University Sporting Event</option>
-								 <option value="coppin_football_game">Coppin State Football Game</option>
-								 <option value="instagram">Instagram</option>
-                                 <option value="facebook">Facebook</option>
-                                 <option value="twitter">Twitter</option>
-                                 <option value="google_ad">Google Ad</option>
-                                 <option value="campus_rep">Campus Rep</option>
-                                 <option value="friend">Friend</option>
-                                 <option value="brochure">Brochure/Flyer</option>
-                                 <option value="newspaper">Newspaper</option>
- 								 <option value="other">Other</option>
-                            </select>
-                            <p>&nbsp;</p>
-                        </div>
+                        -->
                         <div class="col-md-12 sec-row">
 	                        <fieldset data-role="controlgroup" data-mini="true">
 							    Please Select All That Apply
@@ -404,47 +420,100 @@
 								<input type="text" name="ethnicity_other" id="othertext">
 							</fieldset>
 						</div>
+						<div class="col-md-12 sec-row">
+                            <label for="reference" class="select">How did you hear about Hemeos?</label>
+                            <select name="reference" id="reference" class="form-control" >
+                                 <option></option>
+                                 <option value="instagram">Instagram</option>
+                                 <option value="facebook">Facebook</option>
+                                 <option value="twitter">Twitter</option>
+                                 <option value="google_ad">Google Ad</option>
+                                 <option value="campus_rep">Campus Rep</option>
+                                 <option value="friend">Friend</option>
+                                 <option value="brochure">Brochure/Flyer</option>
+                                 <option value="newspaper">Newspaper</option>
+ 								 <option value="other">Other</option>
+                            </select>
+                        </div>
 						 <div class="col-md-12 sec-row">
-							 <fieldset data-role="controlgroup" data-mini="true">
-							    Are you on any of the following registries?
-								<input type="checkbox" name="registry" id="registry1" style="opacity:0" value="Be The Match">
-								<label for="registry1">Be The Match</label>
-								<input type="checkbox" name="registry" id="registry2" style="opacity:0" value="Delete Blood Cancer">
-								<label for="registry2">Delete Blood Cancer</label>
-								<input type="checkbox" name="registry" id="registry3" style="opacity:0" value="Gift of Life">
-								<label for="registry3">Gift of Life</label>
-								<input type="checkbox" name="registry" id="registry4" style="opacity:0" value="C.W. Bill Young Department of Defense Donor Program">
-								<label for="registry4">C.W. Bill Young Department of Defense Donor Program</label>
-								<input type="checkbox" name="registry" id="registry5" style="opacity:0" value="No Registry">
-								<label for="registry5">No, I've never submitted a cheek swab to another registry</label>
-								<input type="checkbox" name="registry" id="registry6" style="opacity:0" value="Not Sure"> 
-								<label for="registry6">Not Sure</label>
-							</fieldset>
-							<p>&nbsp;</p>
+						 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+						 	<p>Prior to today, have you ever done a cheek swab to register as a donor?</p>
+								<input type="radio" name="registry" id="registry-yes" value="1" style="opacity:0" onclick="javascript:registryCheck('registry-yes');">
+								<label for="registry-yes">Yes</label>
+								<input type="radio" name="registry" id="registry-no" value="0" style="opacity:0" onclick="javascript:registryCheck('registry-no');">
+								<label for="registry-no">No</label>
+						 </fieldset>
 						</div>
-                    </div>
-					    <input type="button" id="previous1" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
-					    <input type="button" id="next2" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
+						
+						<div class="col-md-12 sec-row">
+						 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+							<div id="ifYes" style="display:none">
+							<p>Please Select Registry:</p>
+									<select name="registry_info" id="registry_info" class="registry_info" >
+		                                 <option></option>
+		                                 <option value="be_the_match">Be the Match</option>
+		                                 <option value="delete_blood_cancer">Delete Blood Cancer</option>
+										 <option value="gift_of_life">Gift of Life</option>
+										 <option value="cwbill_defense"> C.W Bill Young Dept of Defense Donor Program</option>
+										 <option value="not_sure">Not Sure</option>
+		                            </select>
+							    </div>
+						 </fieldset>
+						</div>
+                      </div><p>&nbsp;</p>  
+                      
+                    <div class="form-group">				  
+					<p style="font-size: 135%">A Family Member or Friend Who Can Reach You</p>
+					<hr class="style1">		
+                    Please provide contact information for a family member or friend who will know how to reach you in case we cannot contact you using the information you provided. <p>&nbsp;</p>
+					  	<div class="col-md-12">
+                         <label for="lang" class="select">The person who can reach me is my...</label>
+                         <select name="altrelationship" id="altrelationship" class="form-control" >
+	                         <option></option>
+	                         <option value="father">Father</option>
+	                         <option value="mother">Mother</option>
+	                         <option value="son">Son</option>
+	                         <option value="daughter">Daughter</option>
+	                         <option value="spouse">Spouse/Partner</option>
+	                         <option value="sibling">Sibling</option>
+	                         <option value="relative">Relative</option>
+	                         <option value="friend">Friend</option>
+	                         <option value="other">Other</option>
+                         </select> 
+                       </div>
+					  <div class="col-md-6">
+					  	<label for="altfname">First Name</label>
+					  	<input class="form-control" type="text" name="altfname" id="altfname" data-clear-btn="true" placeholder="First Name">
+					  </div>
+					  <div class="col-md-6">
+					  	<label for="altlname">Last Name</label>
+					  	<input class="form-control" type="text" name="altlname" id="altlname" data-clear-btn="true" placeholder="Surname">
+					  </div>
+					  <div class="col-md-12">
+					  	<label for="altphone">Phone Number</label>
+					  	<input class="form-control" type="text" name="altphone" id="altphone" data-clear-btn="true" placeholder="(___) ___-____">
+					  </div>
+                      </div><p>&nbsp;</p>
+                                                  		
+            		 <input type="button" id="next1" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
             		</fieldset>
             		
-            		<!-- STEP 3 -->
-            		<fieldset id="step3">
+            		<!-- STEP 2 -->
+            		<fieldset id="step2">
             		<ol class="progtrckr" data-progtrckr-steps="5">
 					    <li class="progtrckr-done">Step1</li>
 					    <li class="progtrckr-done">Step2</li>
 					    <li class="progtrckr-todo">Step3</li>
-					    <li class="progtrckr-todo">Step4</li>
-					    <li class="progtrckr-todo">Step5</li>
 					</ol>		  
 					<p>&nbsp;</p>
-				    <div class="form-group">
+           				<div class="form-group">
                         <p style="font-size: 135%">Health Information</p>
                         <p>Hemeos needs potential donor health information to determine if they are suitable donors. Answering yes to a question does not necessarily eliminate you from being a donor, but may require more follow up if selected as a donor.</p>		
 						<hr class="style1">		
 						<p><b>Have you ever been diagnosed or treated for any of the following conditions?</b></p>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>1. Stroke or TIA (Transient Ischemic Attack)?</p>
+								<p>1. Stroke?</p>
 								<input type="radio" name="tia" id="tia-yes" value="1" style="opacity:0">
 								<label for="tia-yes">Yes</label>
 								<input type="radio" name="tia" id="tia-no" value="0" style="opacity:0">
@@ -453,40 +522,21 @@
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>2. Diagnosed with cancer in the past 5 years?</p>
-								<input type="radio" name="cancer" id="cancer-yes" value="1" style="opacity:0">
+								<p>2. Have you ever had cancer?</p>
+								<input type="radio" name="cancer" id="cancer-yes" value="1" style="opacity:0" onclick="javascript:cancerCheck('cancer-yes');">
 								<label for="cancer-yes">Yes</label>
-								<input type="radio" name="cancer" id="cancer-no" value="0" style="opacity:0">
+								<input type="radio" name="cancer" id="cancer-no" value="0" style="opacity:0" onclick="javascript:cancerCheck('cancer-no');">
 								<label for="cancer-no">No</label>
 							</fieldset>
+							<div id="cancer_if_yes" style="display:none">
+								<input type="text" name="cancer_info" id="cancer_info" value="" placeholder="What type of Cancer?">
+							</div>
 						</div>
-						 <div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, what type of cancer?<p>
-								<input type="text" name="othercancer" id="othercancer" value="">
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>3. Chemotherapy or radiation therapy?(Radioactive Iodine treatment for thyroid cancer is acceptable. Localized bead radiation for prostate or breast cancer is acceptable)</p>
-								<input type="radio" name="therapy" id="therapy-yes" value="1" style="opacity:0">
-								<label for="therapy-yes">Yes</label>
-								<input type="radio" name="therapy" id="therapy-no" value="0" style="opacity:0">
-								<label for="therapy-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>4. Chronic, on-going, significant pain to areas of the spine, back, or neck that interferes with you daily activities AND requires regular chiropractic treatments or regular physical therapy?</p>
-								<input type="radio" name="pain" id="pain-yes" value="1" style="opacity:0">
-								<label for="pain-yes">Yes</label>
-								<input type="radio" name="pain" id="pain-no" value="0" style="opacity:0">
-								<label for="pain-no">No</label>
-							</fieldset>
-						</div>
+
+				
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>5. Prescription pain medication?</p>
+								<p>3. Prescription pain medication?</p>
 								<input type="radio" name="medication" id="medication-yes" value="1" style="opacity:0">
 								<label for="medication-yes">Yes</label>
 								<input type="radio" name="medication" id="medication-no" value="0" style="opacity:0">
@@ -494,32 +544,26 @@
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, please specify?<p>
-								<input type="text" name="othermed" id="othermed" value="">
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>6. Anxiety or depression?</p>
+								<p>4. Anxiety or depression?</p>
 								<input type="radio" name="depression" id="depression-yes" value="1" style="opacity:0">
 								<label for="depression-yes">Yes</label>
 								<input type="radio" name="depression" id="depression-no" value="0" style="opacity:0">
 								<label for="depression-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>7. Autism or Asperger’s syndrome?</p>
+								<p>5. Autism or Asperger’s syndrome?</p>
 								<input type="radio" name="autism" id="autism-yes" value="1" style="opacity:0">
 								<label for="autism-yes">Yes</label>
 								<input type="radio" name="autism" id="autism-no" value="0" style="opacity:0">
 								<label for="autism-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>8. ADHD or ADD?</p>
+								<p>6. ADHD or ADD?</p>
 								<input type="radio" name="add" id="add-yes" value="1" style="opacity:0">
 								<label for="add-yes">Yes</label>
 								<input type="radio" name="add" id="add-no" value="0" style="opacity:0">
@@ -528,7 +572,7 @@
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>9. High Cholestrol?</p>
+								<p>7. High Cholestrol?</p>
 								<input type="radio" name="cholesterol" id="cholesterol-yes" value="1" style="opacity:0">
 								<label for="cholesterol-yes">Yes</label>
 								<input type="radio" name="cholesterol" id="cholesterol-no" value="0" style="opacity:0">
@@ -536,233 +580,121 @@
 							</fieldset>
 						</div>
 						<div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, what medication were you prescribed?<p>
-								<input type="text" name="othercholesterol" id="othercholesterol" value="">
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>10. High blood pressure or hypertension?</p>
-								<input type="radio" name="bloodpressure" id="bloodpressure-yes" value="1" style="opacity:0">
-								<label for="bloodpressure-yes">Yes</label>
-								<input type="radio" name="bloodpressure" id="bloodpressure-no" value="0" style="opacity:0">
-								<label for="bloodpressure-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-6 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>11. Long term infectious disease?</p>
-								<input type="radio" name="infectiousdisease" id="infectiousdisease-yes" value="1" style="opacity:0">
-								<label for="infectiousdisease-yes">Yes</label>
-								<input type="radio" name="infectiousdisease" id="infectiousdisease-no" value="0" style="opacity:0">
-								<label for="infectiousdisease-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, please specify?<p>
-								<input type="text" name="otherdisease" id="otherdisease" value="">
-							</fieldset>
-						</div>	
-					</div>
-					 <div class="form-group">	
-						<hr class="style1">
-						<div class="col-md-12 sec-row">
-							<p><b>Do you now suffer or have you ever suffered from any of the following conditions?</b></p>
-						</div>	
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>1. Coronary artery disease (CAD) or coronary heart disease (CHD) Carotid artery disease Peripheral artery disease (PAD) Heart attack Irregular heartbeat (arrhythmia)</p>
-								<input type="radio" name="heartdisease" id="heartdisease-yes" value="1" style="opacity:0">
+								<p>8. Any heart disease?</p>
+								<input type="radio" name="heartdisease" id="heartdisease-yes" value="1" style="opacity:0" onclick="javascript:heartCheck('heartdisease-yes');">
 								<label for="heartdisease-yes">Yes</label>
-								<input type="radio" name="heartdisease" id="heartdisease-no" value="0" style="opacity:0">
+								<input type="radio" name="heartdisease" id="heartdisease-no" value="0" style="opacity:0" onclick="javascript:heartCheck('heartdisease-no');">
 								<label for="heartdisease-no">No</label>
 							</fieldset>
+							<div id="heartdisease_if_yes" style="display:none">
+							Please Specify:
+									<select name="heartdisease_info" id="heartdisease_info" class="form-control" >
+		                                 <option></option>
+		                                 <option value="coronary_artery_disease">Coronary Artery Disease</option>
+		                                 <option value="coronary_heart_disease">Coronary Heart Disease</option>
+										 <option value="perisperhal_artery_disease">Perisperhal Artery Disease</option>
+										 <option value="heart_attack">Heart Attack</option>
+										 <option value="irregular_heartbeat">Irregular Heartbeat</option>
+										 <option value="other">Other</option>
+		                            </select>
+							 </div>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>2. Lupus</p>
-								<input type="radio" name="lupus" id="lupus-yes" value="1" style="opacity:0">
-								<label for="lupus-yes">Yes</label>
-								<input type="radio" name="lupus" id="lupus-no" value="0" style="opacity:0">
-								<label for="lupus-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>3. Psoriasis</p>
-								<input type="radio" name="psoriasis" id="psoriasis-yes" value="1" style="opacity:0">
-								<label for="psoriasis-yes">Yes</label>
-								<input type="radio" name="psoriasis" id="psoriasis-no" value="0" style="opacity:0">
-								<label for="psoriasis-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>4. Arthritis</p>
+								<p>9. Arthritis?</p>
 								<input type="radio" name="arthritis" id="arthritis-yes" value="1" style="opacity:0">
 								<label for="arthritis-yes">Yes</label>
 								<input type="radio" name="arthritis" id="arthritis-no" value="0" style="opacity:0">
 								<label for="arthritis-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>5. Sjogren's Syndrome</p>
-								<input type="radio" name="sjogrens" id="sjogrens-yes" value="1" style="opacity:0">
-								<label for="sjogrens-yes">Yes</label>
-								<input type="radio" name="sjogrens" id="sjogrens-no" value="0" style="opacity:0">
-								<label for="sjogrens-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>6. Multiple Sclerosis</p>
-								<input type="radio" name="sclerosis" id="sclerosis-yes" value="1" style="opacity:0">
-								<label for="sclerosis-yes">Yes</label>
-								<input type="radio" name="sclerosis" id="sclerosis-no" value="0" style="opacity:0">
-								<label for="sclerosis-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>7. Fibromyalgia</p>
-								<input type="radio" name="fibromyalgia" id="fibromyalgia-yes" value="1" style="opacity:0">
-								<label for="fibromyalgia-yes">Yes</label>
-								<input type="radio" name="fibromyalgia" id="fibromyalgia-no" value="0" style="opacity:0">
-								<label for="fibromyalgia-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>8. Chronic Fatigue Syndrome</p>
+								<p>10. Chronic Fatigue Syndrome?</p>
 								<input type="radio" name="chronicfatigue" id="chronicfatigue-yes" value="1" style="opacity:0">
 								<label for="chronicfatigue-yes">Yes</label>
 								<input type="radio" name="chronicfatigue" id="chronicfatigue-no" value="0" style="opacity:0">
 								<label for="chronicfatigue-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>9. Addinson's Disease</p>
-								<input type="radio" name="addinsons" id="addinsons-yes" value="1" style="opacity:0">
-								<label for="addinsons-yes">Yes</label>
-								<input type="radio" name="addinsons" id="addinsons-no" value="0" style="opacity:0">
-								<label for="addinsons-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>10. Thyroid Disease</p>
-								<input type="radio" name="thyroid" id="thyroid-yes" value="1" style="opacity:0">
-								<label for="thyroid-yes">Yes</label>
-								<input type="radio" name="thyroid" id="thyroid-no" value="0" style="opacity:0">
-								<label for="thyroid-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>11. Seizures</p>
-								<input type="radio" name="seizure" id="seizure-yes" value="1" style="opacity:0">
+								<p>11. Seizures?</p>
+								<input type="radio" name="seizure" id="seizure-yes" value="1" style="opacity:0" onclick="javascript:seizureCheck('seizure-yes');">
 								<label for="seizure-yes">Yes</label>
-								<input type="radio" name="seizure" id="seizure-no" value="0" style="opacity:0">
+								<input type="radio" name="seizure" id="seizure-no" value="0" style="opacity:0" onclick="javascript:seizureCheck('seizure-no');">
 								<label for="seizure-no">No</label>
 							</fieldset>
+							<div id="seizure_if_yes" style="display:none">
+								<input type="text" name="seizure_info" id="seizure_info" value="" placeholder="When was your last seizure?">
+							</div>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>12. Kidney Stones</p>
+								<p>12. Kidney Stones?</p>
 								<input type="radio" name="kidneystones" id="kidneystones-yes" value="1" style="opacity:0">
 								<label for="kidneystones-yes">Yes</label>
 								<input type="radio" name="kidneystones" id="kidneystones-no" value="0" style="opacity:0">
 								<label for="kidneystones-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>13. Asthma</p>
+								<p>13. Asthma?</p>
 								<input type="radio" name="asthma" id="asthma-yes" value="1" style="opacity:0">
 								<label for="asthma-yes">Yes</label>
 								<input type="radio" name="asthma" id="asthma-no" value="0" style="opacity:0">
 								<label for="asthma-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>14. Cirrhosis or any other liver disease</p>
-								<input type="radio" name="cirrhosis" id="cirrhosis-yes" value="1" style="opacity:0">
-								<label for="cirrhosis-yes">Yes</label>
-								<input type="radio" name="cirrhosis" id="cirrhosis-no" value="0" style="opacity:0">
-								<label for="cirrhosis-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>15. Ankylosing Disease</p>
-								<input type="radio" name="ankylosing" id="ankylosing-yes" value="1" style="opacity:0">
-								<label for="ankylosing-yes">Yes</label>
-								<input type="radio" name="ankylosing" id="ankylosing-no" value="0" style="opacity:0">
-								<label for="ankylosing-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>16. HIV or AIDS</p>
-								<input type="radio" name="hiv" id="hiv-yes" value="1" style="opacity:0">
-								<label for="hiv-yes">Yes</label>
-								<input type="radio" name="hiv" id="hiv-no" value="0" style="opacity:0">
-								<label for="hiv-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>17. Hepatitis B or C</p>
-								<input type="radio" name="hepatitis" id="hepatitis-yes" value="1" style="opacity:0">
-								<label for="hepatitis-yes">Yes</label>
-								<input type="radio" name="hepatitis" id="hepatitis-no" value="0" style="opacity:0">
-								<label for="hepatitis-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>18. Diabetes</p>
-								<input type="radio" name="diabetes" id="diabetes-yes" value="1" style="opacity:0">
+								<p>14. Diabetes?</p>
+								<input type="radio" name="diabetes" id="diabetes-yes" value="1" style="opacity:0" onclick="javascript:diabetesCheck('diabetes-yes');">
 								<label for="diabetes-yes">Yes</label>
-								<input type="radio" name="diabetes" id="diabetes-no" value="0" style="opacity:0">
+								<input type="radio" name="diabetes" id="diabetes-no" value="0" style="opacity:0" onclick="javascript:diabetesCheck('diabetes-no');">
 								<label for="diabetes-no">No</label>
 							</fieldset>
+							<div id="diabetes_if_yes" style="display:none">
+							Please Specify:
+									<select name="diabetes_info" id="diabetes_info" class="form-control" >
+		                                 <option></option>
+		                                 <option value="type_1">Type 1</option>
+		                                 <option value="type_2">Type 2</option>
+		                            </select>
+							 </div>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>19. An Aneurysm</p>
+								<p>15. An Aneurysm?</p>
 								<input type="radio" name="aneurysm" id="aneurysm-yes" value="1" style="opacity:0">
 								<label for="aneurysm-yes">Yes</label>
 								<input type="radio" name="aneurysm" id="aneurysm-no" value="0" style="opacity:0">
 								<label for="aneurysm-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>20. Any Blood Clotting Disorder</p>
+								<p>16. Any Blood Clotting Disorder?</p>
 								<input type="radio" name="bloodclot" id="bloodclot-yes" value="1" style="opacity:0">
 								<label for="bloodclot-yes">Yes</label>
 								<input type="radio" name="bloodclot" id="bloodclot-no" value="0" style="opacity:0">
 								<label for="bloodclot-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>21. Hemophilia</p>
+								<p>17. Hemophilia?</p>
 								<input type="radio" name="hemophilia" id="hemophilia-yes" value="1" style="opacity:0">
 								<label for="hemophilia-yes">Yes</label>
 								<input type="radio" name="hemophilia" id="hemophilia-no" value="0" style="opacity:0">
 								<label for="hemophilia-no">No</label>
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
+						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>22.Anemia</p>
+								<p>18.Anemia?</p>
 								<input type="radio" name="anemia" id="anemia-yes" value="1" style="opacity:0">
 								<label for="anemia-yes">Yes</label>
 								<input type="radio" name="anemia" id="anemia-no" value="0" style="opacity:0">
@@ -771,25 +703,82 @@
 						</div>
 						<div class="col-md-6 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>23. Allergies?</p>
-								<input type="radio" name="allergies" id="allergies-yes" value="1" style="opacity:0">
+								<p>19. Allergies?</p>
+								<input type="radio" name="allergies" id="allergies-yes" value="1" style="opacity:0" onclick="javascript:allergiesCheck('allergies-yes');"> 
 								<label for="allergies-yes">Yes</label>
-								<input type="radio" name="allergies" id="allergies-no" value="0" style="opacity:0">
+								<input type="radio" name="allergies" id="allergies-no" value="0" style="opacity:0" onclick="javascript:allergiesCheck('allergies-no');">
 								<label for="allergies-no">No</label>
 							</fieldset>
+							<div id="allergies_if_yes" style="display:none">
+								<input type="text" name="allergies_info" id="allergies_info" value="" placeholder="Please list all allergies...">
+							</div>
 						</div>
 						<div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, please specify?<p>
-								<input type="text" name="otherallergies" id="otherallergies" value="">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>20. Have you ever had any autoimmune disease?</p>
+								<input type="radio" name="autoimmune" id="autoimmune-yes" value="1" style="opacity:0" onclick="javascript:autoimmuneCheck('autoimmune-yes');">
+								<label for="autoimmune-yes">Yes</label>
+								<input type="radio" name="autoimmune" id="autoimmune-no" value="0" style="opacity:0" onclick="javascript:autoimmuneCheck('autoimmune-no');">
+								<label for="autoimmune-no">No</label>
 							</fieldset>
-						</div>			
-					</div>
-					<div class="form-group">
-						<hr class="style1">		
+								<div id="autoimmune_if_yes" style="display:none">
+								Please Specify:
+									<select name="autoimmune_info" id="autoimmune_info" class="form-control" >
+		                                 <option></option>
+		                                 <option value="lupus">Lupus</option>
+		                                 <option value="psorisis">Psorisis</option>
+										 <option value="sjorgren">Sjorgren</option>
+										 <option value="multiple_sclerosis">Multiple Sclerosis</option>
+										 <option value="fibromyalgia">Fibromyalgia</option>
+										 <option value="other">Other</option>
+		                            </select>
+							    </div>
+						</div>
+						<div class="col-md-6 sec-row">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>21. Have you ever had a concussion?</p>
+								<input type="radio" name="concussion" id="concussion-yes" value="1" style="opacity:0" onclick="javascript:concussionCheck('concussion-yes');">
+								<label for="concussion-yes">Yes</label>
+								<input type="radio" name="concussion" id="concussion-no" value="0" style="opacity:0" onclick="javascript:concussionCheck('concussion-no');">
+								<label for="concussion-no">No</label>
+							</fieldset>
+							<div id="concussions_if_yes" style="display:none">
+								<input type="text" name="concussion_info" id="concussion_info" value="" placeholder="Date of last concussion?">
+							</div>
+						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>24. Have you smoked at least 100 cigarettes in your lifetime?</p>
+								<p>22. Long term infections disease such as Hepatitis, Herpes, HIV, etc?</p>
+								<input type="radio" name="infectiousdisease" id="infectiousdisease-yes" value="1" style="opacity:0" onclick="javascript:diseaseCheck('infectiousdisease-yes');">
+								<label for="infectiousdisease-yes">Yes</label>
+								<input type="radio" name="infectiousdisease" id="infectiousdisease-no" value="0" style="opacity:0" onclick="javascript:diseaseCheck('infectiousdisease-no');">
+								<label for="infectiousdisease-no">No</label>
+							</fieldset>
+							<div id="infectiousdisease_if_yes" style="display:none">
+								<input type="text" name="infectiousdisease_info" id="infectiousdisease_info" value="" placeholder="What type of Infectious Disease?">
+							</div>
+						</div>
+						<div class="col-md-12 sec-row">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>23. Chemotherapy or radiation therapy?(Radioactive Iodine treatment for thyroid cancer is acceptable. Localized bead radiation for prostate or breast cancer is acceptable)</p>
+								<input type="radio" name="therapy" id="therapy-yes" value="1" style="opacity:0">
+								<label for="therapy-yes">Yes</label>
+								<input type="radio" name="therapy" id="therapy-no" value="0" style="opacity:0">
+								<label for="therapy-no">No</label>
+							</fieldset>
+						</div>
+						<div class="col-md-12 sec-row">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>24. Chronic, on-going, significant pain to areas of the spine, back, or neck that interferes with you daily activities AND requires regular chiropractic treatments or regular physical therapy?</p>
+								<input type="radio" name="pain" id="pain-yes" value="1" style="opacity:0">
+								<label for="pain-yes">Yes</label>
+								<input type="radio" name="pain" id="pain-no" value="0" style="opacity:0">
+								<label for="pain-no">No</label>
+							</fieldset>
+						</div>
+						<div class="col-md-12 sec-row">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>25. Have you smoked at least 100 cigarettes in your lifetime?</p>
 								<input type="radio" name="smoker" id="smoker-yes" value="1" style="opacity:0">
 								<label for="smoker-yes">Yes</label>
 								<input type="radio" name="smoker" id="smoker-no" value="0" style="opacity:0">
@@ -798,26 +787,11 @@
 						</div>
 						<div class="col-md-12 sec-row">
 							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>25. Has anyone in your immediate family (parents, siblings, or grandparents) been diagnosed with Alzheimer’s?</p>
+								<p>26. Has anyone in your immediate family (parents, siblings, or grandparents) been diagnosed with Alzheimer’s?</p>
 								<input type="radio" name="alzheimer" id="alzheimer-yes" value="1" style="opacity:0">
 								<label for="alzheimer-yes">Yes</label>
 								<input type="radio" name="alzheimer" id="alzheimer-no" value="0" style="opacity:0">
 								<label for="alzheimer-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-6 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>26. Have you ever had a concussion?</p>
-								<input type="radio" name="concussion" id="concussion-yes" value="1" style="opacity:0">
-								<label for="concussion-yes">Yes</label>
-								<input type="radio" name="concussion" id="concussion-no" value="0" style="opacity:0">
-								<label for="concussion-no">No</label>
-							</fieldset>
-						</div>
-						<div class="col-md-6 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>If yes, please specify date of concussion?<p>
-								<input type="text" name="concussiondate" id="concussiondate" value=" " placeholder= "YYYY-MM-DD">
 							</fieldset>
 						</div>
 						<div class="col-md-12 sec-row">
@@ -828,90 +802,54 @@
 						</div>
 						<div class="col-md-12 sec-row">
 						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>28. Please list any prescription medication you are currently taking.<p>
+								<p>28. Please list any prescription medications you've taken for anything mentioned on this form.<p>
 								<input type="text" name="prescriptionmeds" id="prescriptionmeds" value="">
 							</fieldset>
 						</div>
-						<div class="col-md-12 sec-row">
-							<hr class="style1">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p><b>Hemeos works with Healthcare partners to find cures for many different diseases and disorders. Can we follow up with you to ask you to provide additional information if needed?</b></p>
-								<input type="radio" name="followup" id="followup-yes" value="1" style="opacity:0">
-								<label for="followup-yes">Yes</label>
-								<input type="radio" name="followup" id="followup-no" value="0" style="opacity:0">
-								<label for="followup-no">No</label>
-							</fieldset>
-						</div>
-						<p>&nbsp;</p>							
+						<p>&nbsp;</p>
 					</div>
-					    <input type="button" id="previous2" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
-					    <input type="button" id="next3" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
+					    <input type="button" id="previous1" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
+					    <input type="button" id="next2" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
             		</fieldset>
             		
-            		<!-- STEP 4 -->
-            		<fieldset id="step4">
+            		<!-- STEP 3 -->
+            		<fieldset id="step3">
             		<ol class="progtrckr" data-progtrckr-steps="5">
 					    <li class="progtrckr-done">Step1</li>
 					    <li class="progtrckr-done">Step2</li>
 					    <li class="progtrckr-done">Step3</li>
-					    <li class="progtrckr-todo">Step4</li>
-					    <li class="progtrckr-todo">Step5</li>
 					</ol>		  
 					<p>&nbsp;</p>
-				    <div class="form-group">
-				    <p style="font-size: 135%">Research Consent Form</p>
-					<hr class="style1">	
-						<div class="scrollcontainer">
-						  <div class="scrollcontent">
-							<p><b>Research Consent Release</b></p>
-							<p><b>Hemeos works with researchers, universities, and healthcare organizations to advance medical science. We would like you to participate in these efforts in addition to being a blood stem cell or bone marrow donor.</b></p> 
-							<p>If you choose to participate Hemeos will share your individualized information and buccal cheek swab information with these partners. Your registration information (name and contact information), will NOT be shared unless we receive additional, explicit consent from you via phone or email. Your identify is protected at all times. Additionally, we may contact you with additional questionnaires or testing that may be incentivized for you. </p>	
-							<p>There is a very small chance that someone with access to the research data or results could expose personal information about you. Hemeos has policies and practices in place to minimize the chance of such an event. </p>	
-							<p>Hemeos may share some data with external research partners and in scientific journals. This data will be aggregated across enough customers to minimize the chance that your personal information will be exposed. Hemeos may need to share the information with other agencies as required by law. See further details in the Privacy Policy. This research helps find cures for diseases that affect our community. Additionally, you may be contacted to participate in further studies and research efforts that are incentivized. You are under no obligation to participate if you choose to sign the research consent release. </p>	
-							<p>You can withdraw at any time. If your data that has been entered into a study already it cannot be withdrawn, but future use of your data will not occur 30 days after you withdraw. </p>
-							<p> "Genetic and Self-Reported Information" refers to: Your genetic data, Health related data, Information you enter into surveys, forms and other features sent by Hemeos, Your age and ethnicity.</p>
-							<p> By signing my electronic below, I agree to let Hemeos use my Information, as described above. </p>
-						  </div>
-						</div>
-						<div class="col-md-12 sec-row">
-							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>I have read an understand the Research Consent Release and agree to its terms.</p>
-								<input type="radio" name="researchconsent" id="researchconsent-yes" value="1" style="opacity:0">
-								<label for="researchconsent-yes">  I Agree </label>
-								<input type="radio" name="researchconsent" id="researchconsent-no" value="0" style="opacity:0">
-								<label for="researchconsent-no">I Disagree</label>
-							</fieldset>
-						</div>
-						<p>&nbsp;</p>
-						<p style="font-size: 135%">Electronic Signature</p>
-						<hr class="style1">	
-						<div class="col-md-12 sec-row">
-						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-								<p>By entering my full name (First Middle Last) into the field below, I acknowledge that I have read, understand and agree with the above. I understand that my typewritten name in this field constitutes my electronic signature.<p>
-								<input type="text" name="signature1" id="signature1" placeholder="Please Sign Here">
-							</fieldset>
-						</div>
-						<p>&nbsp;</p>
-                 	</div>
-					    <input type="button" id="previous3" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
-					    <input type="button" id="next4" data-theme="b" value="Next" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
-            		</fieldset>
-
-					<!-- STEP 5 -->
-            		<fieldset id="step5" data-role="controlgroup">
-            		<ol class="progtrckr" data-progtrckr-steps="5">
-					    <li class="progtrckr-done">Step1</li>
-					    <li class="progtrckr-done">Step2</li>
-					    <li class="progtrckr-done">Step3</li>
-					    <li class="progtrckr-done">Step4</li>
-					    <li class="progtrckr-todo">Step5</li>
-					</ol>		  
-					<p>&nbsp;</p>
-					<div class="form-group">
+				    <div class="form-group">				
+						<div class="form-group">
 					    <p style="font-size: 135%">Donor Information and Consent Form</p>
 						<hr class="style1">	
-							<div class="scrollcontainer">
-							  <div class="scrollcontent">
+						
+						<div data-role="popup" id="donorconsent" class="popup">
+					      <div data-role="header" data-theme="c">
+					        <h1><b>DONOR CONSENT RELEASE</b></h1>
+					        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+					      </div>
+					      <div data-role="main" class="ui-content"> 
+						    	<p><b>Donor Information and Consent Form</b></p>
+								<p>Please carefully read the entire donor information and consent form. Donating is a major commitment and we want donors to understand the whole process. If you decide to participate as a potential donor, and later change your mind, you are free to withdraw at any time. Hemeos will use commercially reasonable efforts to delete your Registration Contact information from our systems. </p>
+								<p>Initial registration entails a collection of cheek cells from inside your mouth using a cotton-tipped swab. This swab is sent to a laboratory for human leukocyte antigen (HLA) typing. The results are stored for matching your HLA typing with patients in need of an unrelated donor. You should be aware marrow or peripheral blood stem cell screening, workup, and donation may require approximately 20 hours of your time. If you are identified as a potential match for a patient, additional confirmatory typing will be required. This will entail a blood sample as well as infectious disease testing. Once confirmatory typing has identified you as a suitable match, you will undergo a medical screening to ensure you are physically capable of donating. You will then be eligible for one or both of the following donation procedures. </p>
+								<p>1. Blood Stem Cell Donation: This is an outpatient procedure not requiring anesthesia used in 70% of donations. The donor receives injections of a synthetic protein called filgrastim (neupogen) for 5 days to produce enough stem cells for an effective collection. Filgrastim stimulates the release of stem cells from the bone marrow into the blood system. These cells are collected through a procedure called apheresis. A centrifuge separates the stem cells from the rest of the blood, which is then infused back to the donor. The process takes approximately 4 hours in the recipient. </p>
+								<p>2. Bone Marrow Donation: This is an outpatient procedure requiring anesthesia used in 30% of donations. Approximately 3% of the donor's marrow from the pelvic bone is removed with a needle and syringe. The procedure is approximately 1-2 hours and the donor goes home the same day. </p>
+								<p><b>Donor Compensation:</b> You will be compensated up to $2000 as outlined in your donor contract for completing a donation. This is contingent on the legality of donor compensation at the time and location of the donation. Be aware at this time peripheral blood stem cells are the only product for which compensation is legal in the United States. Bone Marrow donation is not eligible for financial compensation. Compensation will be processed following the transplant procedure for the patient and the determination that infectious disease marker testing was negative in all tests. Donors who knowingly or unknowingly attempt to transmit an infectious disease through their donation will not be compensated. You will not be charged for any portion of the donor workup and any travel expenses will be covered by HEMEOS or its partners. </p>
+								<p><b>Confidentiality:</b> HEMEOS has procedures in place to keep each potential donor’s personal information confidential as outlined in our Privacy Policy. Your tissue type and stored cheek swab sample are serialized and stored separately from the personal identifying information provided by you during initial registration. We do not provide your personal identifying information to transplant centers or laboratories  conducting DNA or HLA typing. These parties will only be able to identify your sample based off a serial number provided to them by HEMEOS. HEMEOS will be the only organization to contact you for confirmatory typing and workup if you are selected. Your donor information may be transferred to another registry to be used in a similar manner to HEMEOS. </p>
+								<p><b>CONSENT FOR REGISTRATION</b></p>
+								<p>I have read the information provided, and agree to register as a potential blood stem cell or bone marrow donor. I authorize Hemeos to determine and store my HLA tissue type. I authorize follow-on testing to be conducted if required. I understand Hemeos will provide my HLA typing to transplant centers searching for unrelated donors for their patients and Hemeos will contact me if I am matched to a patient. I understand that while I am under no legal obligation to proceed, I have considered my wish to volunteer seriously and intend to donate if called upon. </p>
+							<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>
+						  </div>
+					      <div data-role="footer" data-theme="c">
+					        <h1></h1>
+					      </div>
+					    </div>
+					    
+						<!-- 
+					<div class="scrollcontainer">
+						<div class="scrollcontent">	
 							  	<p><b>Donor Information and Consent Form</b></p>
 								<p>Please carefully read the entire donor information and consent form. Donating is a major commitment and we want donors to understand the whole process. If you decide to participate as a potential donor, and later change your mind, you are free to withdraw at any time. Hemeos will use commercially reasonable efforts to delete your Registration Contact information from our systems. </p>
 								<p>Initial registration entails a collection of cheek cells from inside your mouth using a cotton-tipped swab. This swab is sent to a laboratory for human leukocyte antigen (HLA) typing. The results are stored for matching your HLA typing with patients in need of an unrelated donor. You should be aware marrow or peripheral blood stem cell screening, workup, and donation may require approximately 20 hours of your time. If you are identified as a potential match for a patient, additional confirmatory typing will be required. This will entail a blood sample as well as infectious disease testing. Once confirmatory typing has identified you as a suitable match, you will undergo a medical screening to ensure you are physically capable of donating. You will then be eligible for one or both of the following donation procedures. </p>
@@ -921,17 +859,70 @@
 								<p><b>Confidentiality:</b> HEMEOS has procedures in place to keep each potential donor’s personal information confidential as outlined in our Privacy Policy. Your tissue type and stored cheek swab sample are serialized and stored separately from the personal identifying information provided by you during initial registration. We do not provide your personal identifying information to transplant centers or laboratories  conducting DNA or HLA typing. These parties will only be able to identify your sample based off a serial number provided to them by HEMEOS. HEMEOS will be the only organization to contact you for confirmatory typing and workup if you are selected. Your donor information may be transferred to another registry to be used in a similar manner to HEMEOS. </p>
 								<p><b>CONSENT FOR REGISTRATION</b></p>
 								<p>I have read the information provided, and agree to register as a potential blood stem cell or bone marrow donor. I authorize Hemeos to determine and store my HLA tissue type. I authorize follow-on testing to be conducted if required. I understand Hemeos will provide my HLA typing to transplant centers searching for unrelated donors for their patients and Hemeos will contact me if I am matched to a patient. I understand that while I am under no legal obligation to proceed, I have considered my wish to volunteer seriously and intend to donate if called upon. </p>
-							  </div>
 							</div>
+						</div>-->
 							<div class="col-md-12 sec-row">
 								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-									<p>I have read and understand the Donor Registration and consent to register with Hemeos and agree to its term.</p>
+										
+										<p>I have read and understand the <a href="#donorconsent" data-rel="popup" data-position-to="window" data-transition="fade">Donor Registration and Consent</a> to register with Hemeos and agree to its term.</p>
+									
 									<input type="radio" name="donorconsent" id="donorconsent-yes" value="1" style="opacity:0">
 									<label for="donorconsent-yes">  I Agree </label>
 								</fieldset>
 							</div>
-							<p>&nbsp;</p>
-							<p style="font-size: 135%">Terms of Use and Privacy Policy</p>
+							<p>&nbsp;</p>	
+						<p style="font-size: 135%">Research Consent Form</p>
+						<hr class="style1">	
+						
+						<div data-role="popup" id="researchconsent" class="popup">
+					      <div data-role="header" data-theme="c">
+					        <h1><b>RESEARCH CONSENT RELEASE</b></h1>
+					        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+					      </div>
+					      <div data-role="main" class="ui-content"> 
+						  	<p><b>Research Consent Release</b></p>
+							<p><b>Hemeos works with researchers, universities, and healthcare organizations to advance medical science. We would like you to participate in these efforts in addition to being a blood stem cell or bone marrow donor.</b></p> 
+							<p>If you choose to participate Hemeos will share your individualized information and buccal cheek swab information with these partners. Your registration information (name and contact information), will NOT be shared unless we receive additional, explicit consent from you via phone or email. Your identify is protected at all times. Additionally, we may contact you with additional questionnaires or testing that may be incentivized for you. </p>	
+							<p>There is a very small chance that someone with access to the research data or results could expose personal information about you. Hemeos has policies and practices in place to minimize the chance of such an event. </p>	
+							<p>Hemeos may share some data with external research partners and in scientific journals. This data will be aggregated across enough customers to minimize the chance that your personal information will be exposed. Hemeos may need to share the information with other agencies as required by law. See further details in the Privacy Policy. This research helps find cures for diseases that affect our community. Additionally, you may be contacted to participate in further studies and research efforts that are incentivized. You are under no obligation to participate if you choose to sign the research consent release. </p>	
+							<p>You can withdraw at any time. If your data that has been entered into a study already it cannot be withdrawn, but future use of your data will not occur 30 days after you withdraw. </p>
+							<p> "Genetic and Self-Reported Information" refers to: Your genetic data, Health related data, Information you enter into surveys, forms and other features sent by Hemeos, Your age and ethnicity.</p>
+							<p> By signing my electronic below, I agree to let Hemeos use my Information, as described above. </p>
+						  <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>
+						  </div>
+					      <div data-role="footer" data-theme="c">
+					        <h1></h1>
+					      </div>
+					    </div>
+						
+						
+						
+						<!--  
+						<div class="scrollcontainer">
+						<div class="scrollcontent">	
+							<p><b>Research Consent Release</b></p>
+							<p><b>Hemeos works with researchers, universities, and healthcare organizations to advance medical science. We would like you to participate in these efforts in addition to being a blood stem cell or bone marrow donor.</b></p> 
+							<p>If you choose to participate Hemeos will share your individualized information and buccal cheek swab information with these partners. Your registration information (name and contact information), will NOT be shared unless we receive additional, explicit consent from you via phone or email. Your identify is protected at all times. Additionally, we may contact you with additional questionnaires or testing that may be incentivized for you. </p>	
+							<p>There is a very small chance that someone with access to the research data or results could expose personal information about you. Hemeos has policies and practices in place to minimize the chance of such an event. </p>	
+							<p>Hemeos may share some data with external research partners and in scientific journals. This data will be aggregated across enough customers to minimize the chance that your personal information will be exposed. Hemeos may need to share the information with other agencies as required by law. See further details in the Privacy Policy. This research helps find cures for diseases that affect our community. Additionally, you may be contacted to participate in further studies and research efforts that are incentivized. You are under no obligation to participate if you choose to sign the research consent release. </p>	
+							<p>You can withdraw at any time. If your data that has been entered into a study already it cannot be withdrawn, but future use of your data will not occur 30 days after you withdraw. </p>
+							<p> "Genetic and Self-Reported Information" refers to: Your genetic data, Health related data, Information you enter into surveys, forms and other features sent by Hemeos, Your age and ethnicity.</p>
+							<p> By signing my electronic below, I agree to let Hemeos use my Information, as described above. </p>
+						</div>
+						</div>-->
+						<div class="col-md-12 sec-row">
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								
+									<p>I have read an understand the <a href="#researchconsent" data-rel="popup" data-position-to="window" data-transition="fade">Research Consent Release</a> and agree to its terms.</p>
+							
+								<input type="radio" name="researchconsent" id="researchconsent-yes" value="1" style="opacity:0">
+								<label for="researchconsent-yes">  I Agree </label>
+								<input type="radio" name="researchconsent" id="researchconsent-no" value="0" style="opacity:0">
+								<label for="researchconsent-no">I Disagree</label>
+							</fieldset>
+						</div>
+						<p>&nbsp;</p>				
+						<p style="font-size: 135%">Terms of Use and Privacy Policy</p>
 						<hr class="style1">	
 						<div data-role="popup" id="privacy" class="popup">
 					      <div data-role="header" data-theme="c">
@@ -1010,20 +1001,21 @@
 									<label for="agreement1">Yes</label>
 								</fieldset>
 						</div>
-							
-							<p>&nbsp;</p>
-							<p style="font-size: 135%">Electronic Signature</p>
-							<hr class="style1">	
-							<div class="col-md-12 sec-row">
-							 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-									<p>By entering my full name (First Middle Last) into the field below, I acknowledge that I have read, understand and agree with the above. I understand that my typewritten name in this field constitutes my electronic signature.<p>
-									<input type="text" name="signature2" id="signature2" placeholder="Please Sign Here">
-									<input type="hidden" name="reg_method" id="reg_method" value="online">
-								</fieldset>
-							</div>
 							<p>&nbsp;</p>
 	                 	</div>
-					    <input type="button" id="previous4" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
+												
+						<p style="font-size: 135%">Electronic Signature</p>
+						<hr class="style1">	
+						<div class="col-md-12 sec-row">
+						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<p>By entering my full name (First Middle Last) into the field below, I acknowledge that I have read, understand and agree with the above. I understand that my typewritten name in this field constitutes my electronic signature.<p>
+								<input type="text" name="signature1" id="signature1" placeholder="Please Sign Here">
+								<input type="hidden" name="reg_method" id="reg_method" value="drive">
+							</fieldset>
+						</div>
+						<p>&nbsp;</p>
+                 	</div>
+					    <input type="button" id="previous2" data-theme="b" value="Previous" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-left"/>
 					    <input type="submit" id="submit" data-theme="b" value="Submit" class="button ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-b ui-mini pull-right"/>
             		</fieldset>
 
@@ -1047,19 +1039,6 @@
 			
 			$("#next2").click(function(){
 					ga('send', 'pageview', '/formStep3.html');
-			  });
-			  
-			
-				$("#next3").click(function(){
-					ga('send', 'pageview', '/formStep4.html');
-			  });
-			  
-				$("#next4").click(function(){
-					ga('send', 'pageview', '/formStep5.html');
-			  });
-			  
-			 $("#next5").click(function(){
-					ga('send', 'pageview', '/formStep6.html');
 			  });
 			  
 			  

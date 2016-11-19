@@ -113,7 +113,7 @@ $(document).ready(function(){
 	
 	//Datepicker
     $( "#dob" ).datepicker({
-      dateFormat : 'yyyy/mm/dd',
+      dateFormat : 'yy-mm-dd',
       yearRange: '-100y:c+nn',
       changeMonth: true,
       changeYear: true

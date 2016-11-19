@@ -111,90 +111,81 @@ $db = new Db();
 /**
  * Quote and escape registration form submitted values
  */
-//Step 1
+//Step1
+//Contact Information
 $fname = $db -> quote($_POST['fname']);
 $lname = $db -> quote($_POST['lname']);
 $pname = $db -> quote($_POST['pname']);
-$email = $db -> quote($_POST['email']);
+$dob = $db -> quote($_POST['dob']);
 $phone = $db -> quote($_POST['phone']);
+$email = $db -> quote($_POST['email']);
+//Address Information
 $street1 = $db -> quote($_POST['street1']);
 $street2 = $db -> quote($_POST['street2']);
 $city = $db -> quote($_POST['city']);
 $state = $db -> quote($_POST['state']);
 $country = $db -> quote($_POST['country']);
 $zip = $db -> quote($_POST['zip']);
-$altfname = $db -> quote($_POST['altfname']);
-$altlname = $db -> quote($_POST['altlname']);
-$altemail = $db -> quote($_POST['altemail']);
-$altphone = $db -> quote($_POST['altphone']);
-$altrelationship = $db -> quote($_POST['altrelationship']);
-
-//Step 2
-$dob = $db -> quote($_POST['dob']);
+//Personal Information
 $sex = $db -> quote($_POST['sex']);
 $height = $db -> quote($_POST['height']);
 $weight = $db -> quote($_POST['weight']);
-$lang = $db -> quote($_POST['lang']);
-$reference = $db -> quote($_POST['reference']);
 $ethnicity = $db -> quote($_POST['ethnicity']);
 $ethnicity_other = $db -> quote($_POST['ethnicity_other']);
+$reference = $db -> quote($_POST['reference']);
 $registry = $db -> quote($_POST['registry']);
+$registryinfo = $db -> quote($_POST['registry_info']);
+//Alternative Contact
+$altrelationship = $db -> quote($_POST['altrelationship']);
+$altfname = $db -> quote($_POST['altfname']);
+$altlname = $db -> quote($_POST['altlname']);
+$altphone = $db -> quote($_POST['altphone']);
 
-//Step 3
+//Step 2
 $tia = $db -> quote($_POST['tia']);
 $cancer = $db -> quote($_POST['cancer']);
-$othercancer = $db -> quote($_POST['othercancer']);
-$therapy = $db -> quote($_POST['therapy']);
-$pain = $db -> quote($_POST['pain']);
+$cancerinfo = $db -> quote($_POST['cancer_info']);
 $medication = $db -> quote($_POST['medication']);
-$othermed = $db -> quote($_POST['othermed']);
 $depression = $db -> quote($_POST['depression']);
 $autism = $db -> quote($_POST['autism']);
 $add = $db -> quote($_POST['add']);
 $cholesterol = $db -> quote($_POST['cholesterol']);
-$othercholesterol = $db -> quote($_POST['othercholesterol']);
-$bloodpressure = $db -> quote($_POST['bloodpressure']);
-$infectiousdisease = $db -> quote($_POST['infectiousdisease']);
-$otherdisease = $db -> quote($_POST['otherdisease']);
 $heartdisease = $db -> quote($_POST['heartdisease']);
-$lupus = $db -> quote($_POST['lupus']);
-$psoriasis = $db -> quote($_POST['psoriasis']);
+$heartdiseaseinfo = $db -> quote($_POST['heartdisease_info']);
 $arthritis = $db -> quote($_POST['arthritis']);
-$sjogrens = $db -> quote($_POST['sjogrens']);
-$sclerosis = $db -> quote($_POST['sclerosis']);
-$fibromyalgia = $db -> quote($_POST['fibromyalgia']);
 $chronicfatigue = $db -> quote($_POST['chronicfatigue']);
-$addinsons = $db -> quote($_POST['addinsons']);
-$thyroid = $db -> quote($_POST['thyroid']);
 $seizure = $db -> quote($_POST['seizure']);
+$seizureinfo = $db -> quote($_POST['seizure_info']);
 $kidneystones = $db -> quote($_POST['kidneystones']);
 $asthma = $db -> quote($_POST['asthma']);
-$cirrhosis = $db -> quote($_POST['cirrhosis']);
-$ankylosing = $db -> quote($_POST['ankylosing']);
-$hiv = $db -> quote($_POST['hiv']);
-$hepatitis = $db -> quote($_POST['hepatitis']);
 $diabetes = $db -> quote($_POST['diabetes']);
+$diabetesinfo = $db -> quote($_POST['diabetes_info']);
 $aneurysm = $db -> quote($_POST['aneurysm']);
 $bloodclot = $db -> quote($_POST['bloodclot']);
 $hemophilia = $db -> quote($_POST['hemophilia']);
 $anemia = $db -> quote($_POST['anemia']);
 $allergies = $db -> quote($_POST['allergies']);
-$otherallergies = $db -> quote($_POST['otherallergies']);
+$allergies_info = $db -> quote($_POST['allergies_info']);
+$autoimmune = $db -> quote($_POST['autoimmune']);
+$autoimmuneinfo = $db -> quote($_POST['autoimmune_info']);
+$concussion = $db -> quote($_POST['concussion']);
+$concussioninfo = $db -> quote($_POST['concussion_info']);
+$infectiousdisease = $db -> quote($_POST['infectiousdisease']);
+$infectiousdiseaseinfo = $db -> quote($_POST['infectiousdisease_info']);
+$therapy = $db -> quote($_POST['therapy']);
+$pain = $db -> quote($_POST['pain']);
 $smoker = $db -> quote($_POST['smoker']);
 $alzheimer = $db -> quote($_POST['alzheimer']);
-$concussion = $db -> quote($_POST['concussion']);
-$concussiondate = $db -> quote($_POST['concussiondate']);
 $otherconditions = $db -> quote($_POST['otherconditions']);
 $prescriptionmeds = $db -> quote($_POST['prescriptionmeds']);
-$followup = $db -> quote($_POST['followup']);
 
-//Step 4 and 5
-$researchconsent = $db -> quote($_POST['researchconsent']);
-$signature1 = $db -> quote($_POST['signature1']);
+//Step 3
 $donorconsent = $db -> quote($_POST['donorconsent']);
-$agreement1 = $db -> quote($_POST['agreement1']);
-$signature2 = $db -> quote($_POST['signature2']);
+$researchconsent = $db -> quote($_POST['researchconsent']);
+$termsagreement = $db -> quote($_POST['termsagreement']);
+$signature = $db -> quote($_POST['signature']);
 $reg_method = $db -> quote($_POST['reg_method']);
+$barcode = $db -> quote($_POST['barcode']); //Only for drive registration
 
 //Additional variable metrics
 //$age = floor((time() - strtotime($dob)) / 31556926);
@@ -218,7 +209,8 @@ $result = $db -> query("INSERT INTO `donor_contact` (
 			`donor_city`,
 			`donor_state`,
 			`donor_country`,
-			`donor_zipcode`
+			`donor_zipcode`,
+			`kit_id`
 			)
 		VALUES (" . $fname . ",
 				" . $lname . ",
@@ -230,7 +222,8 @@ $result = $db -> query("INSERT INTO `donor_contact` (
 				" . $city . ",
 				" . $state . ",
 				" . $country . ",
-				" . $zip . "
+				" . $zip . ",
+				" . $barcode . "
 			)");
 if($result)
 {
@@ -243,19 +236,16 @@ else
 	echo $db->error();
 }
 
-
 //alternate_contact table
 $result = $db -> query("INSERT INTO `alternate_contact` (
 			`alt_first_name`,
 			`alt_last_name`,
-			`alt_email`,
 			`alt_phone`,
 			`alt_relationship`,
 			`donor_contact_donor_id`
 			)
 		VALUES (" . $altfname . ",
 				" . $altlname . ",
-				" . $altemail . ",
 				" . $altphone . ",
 				" . $altrelationship . ",
 				" . $last_id . "
@@ -273,7 +263,7 @@ else
 }
 
 //donor_info table
-//need to add other ethnicity, ethnicity and registry only insert one value
+//need to add other ethnicity, ethnicity only insert one value
 $result = $db -> query("INSERT INTO `donor_info` (
 			`donor_contact_donor_id`,
 			`donor_dob`,
@@ -282,10 +272,10 @@ $result = $db -> query("INSERT INTO `donor_info` (
 			`donor_height`,
 			`donor_weight`,
 			`donor_bmi`,
-			`donor_language`,
 			`donor_ethnicity`,
 			`donor_reference`,
 			`donor_registry`,
+			`donor_registry_info`,
 			`donor_registration_method`
 			)
 		VALUES (" . $last_id . ",
@@ -295,10 +285,10 @@ $result = $db -> query("INSERT INTO `donor_info` (
 				" . $height . ",
 				" . $weight . ",
 				" . $bmi . ",
-				" . $lang . ",
 				" . $ethnicity . ",
 				" . $reference . ",
 				" . $registry . ",
+				" . $registryinfo . ",
 				" . $reg_method . "		
 			)");
 
@@ -321,33 +311,22 @@ $result = $db -> query("INSERT INTO `health_info` (
 			`therapy`,
 			`pain`,
 			`prescription_painmeds`,
-			`pain_prescriptions`,
 			`depression`,
 			`autism`,
 			`add`,
 			`cholesterol`,
-			`cholestrol_meds`,
-			`bloodpressure`,
 			`infectious_disease`,
 			`infectious_disease_info`,
 			`heart_disease`,
-			`lupus`,
-			`psoriasis`,
+			`heart_disease_info`,
 			`arthritis`,
-			`sjogrens`,
-			`sclerosis`,
-			`fibromyalgia`,
 			`chronic_fatigue`,
-			`addinsons`,
-			`thyroid`,
 			`seizure`,
+			`seizure_info`,
 			`kidneystones`,
 			`asthma`,
-			`cirrhosis`,
-			`ankylosing`,
-			`hiv`,
-			`hepatitis`,
 			`diabetes`,
+			`diabetes_info`,
 			`aneurysm`,
 			`bloodclot`,
 			`hemophilia`,
@@ -358,53 +337,46 @@ $result = $db -> query("INSERT INTO `health_info` (
 			`alzheimer`,
 			`concussion`,
 			`concussion_date`,
+			`autoimmune`,
+			`autoimmune_info`,
 			`other_conditions`,
 			`prescription_meds`
 			)
 		VALUES (" . $last_id . ",
 				" . $tia . ",
 				" . $cancer . ",
-				" . $othercancer . ",
+				" . $cancerinfo . ",
 				" . $therapy . ",
 				" . $pain . ",
 				" . $medication . ",
-				" . $othermed . ",
 				" . $depression . ",
 				" . $autism . ",
 				" . $add . ",
 				" . $cholesterol . ",
-				" . $othercholesterol . ",
-				" . $bloodpressure . ",
 				" . $infectiousdisease . ",
-				" . $otherdisease . ",
+				" . $infectiousdiseaseinfo . ",
 				" . $heartdisease . ",
-				" . $lupus . ",
-				" . $psoriasis . ",
+				" . $heartdiseaseinfo . ",		
 				" . $arthritis . ",
-				" . $sjogrens . ",
-				" . $sclerosis . ",
-				" . $fibromyalgia . ",
 				" . $chronicfatigue . ",
-				" . $addinsons . ",
-				" . $thyroid . ",
 				" . $seizure . ",
+				" . $seizureinfo . ",
 				" . $kidneystones . ",
 				" . $asthma . ",
-				" . $cirrhosis . ",
-				" . $ankylosing . ",
-				" . $hiv . ",
-				" . $hepatitis . ",
 				" . $diabetes . ",
+				" . $diabetesinfo . ",		
 				" . $aneurysm . ",
 				" . $bloodclot . ",
 				" . $hemophilia . ",
 				" . $anemia . ",
 				" . $allergies . ",
-				" . $otherallergies . ",
+				" . $allergies_info . ",
 				" . $smoker . ",
 				" . $alzheimer . ",
 				" . $concussion . ",
-				" . $concussiondate . ",
+				" . $concussioninfo . ",
+				" . $autoimmune . ",	
+				" . $autoimmuneinfo . ",	
 				" . $otherconditions . ",
 				" . $prescriptionmeds . "
 			)");
@@ -423,19 +395,15 @@ else
 $result = $db -> query("INSERT INTO `donor_agreements` (
 			`donor_contact_donor_id`,
 			`privacy_agreement`,
-			`followup_agreement`,
 			`research_consent`,
-			`research_consent_signature`,
-			`donor_consent`,
-			`donor_consent_signature`
+			`signature`,
+			`donor_consent`
 			)
 		VALUES (" . $last_id . ",
-				" . $agreement1 . ",
-				" . $followup . ",
+				" . $termsagreement . ",
 				" . $researchconsent . ",
-				" . $signature1 . ",
-				" . $donorconsent . ",
-				" . $signature2 . "
+				" . $signature . ",
+				" . $donorconsent . "
 			)");
 
 if($result)

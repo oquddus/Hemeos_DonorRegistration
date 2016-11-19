@@ -100,6 +100,10 @@ if (isset($_POST["donorconsent"])) {$donorconsent=$_POST["donorconsent"];}  else
 if (isset($_POST["signature2"])) {$signature2=$_POST["signature2"];}  else{$signature2= " ";}
 if (isset($_POST["reg_method"])) {$reg_method=$_POST["reg_method"];}  else{$reg_method= " ";}
 
+if (isset($_POST["pname"])) {$pname=$_POST["pname"];}  else{$pname= " ";}
+if (isset($_POST["autoimmune"])) {$autoimmune=$_POST["autoimmune"];}  else{$autoimmune= " ";}
+if (isset($_POST["barcode"])) {$barcode=$_POST["barcode"];}  else{$barcode= " ";}
+
 
 $age = floor((time() - strtotime($dob)) / 31556926);
 $bmi = 703*($weight/pow($height,2));
@@ -186,96 +190,102 @@ $data_array = array (
 			$signature2,
 			$age,
 			$bmi,
-			$reg_method
+			$reg_method,
+      $pname,
+      $autoimmune,
+      $barcode
             );
 
 /*CREATE HEADERS FOR CSV FILE*/
-$csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,altlname,altemail,altphone,altrelationship,agreement1,agreement2,agreement3,agreement4,agreement5,dob,sex,height,weight,lang,reference,ethnicity,registry,tia,cancer,othercancer,therapy,pain,medication,othermed,depression,autism,add,cholesterol,othercholesterol,bloodpressure,infectiousdisease,otherdisease,heartdisease,lupus,psoriasis,arthritis,sjogrens,sclerosis,fibromyalgia,chronicfatigue,addinsons,thyroid,seizure,kidneystones,asthma,cirrhosis,ankylosing,hiv,hepatitis,diabetes,aneurysm,bloodclot,hemophilia,anemia,allergies,otherallergies,smoker,alzheimer,concussion,concussiondate,otherconditions,prescriptionmeds,followup,researchconsent,signature1,donorconsent,signature2,age,bmi,reg_method \n";//Column headers
+$csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,altlname,altemail,altphone,altrelationship,agreement1,agreement2,agreement3,agreement4,agreement5,dob,sex,height,weight,lang,reference,ethnicity,registry,tia,cancer,othercancer,therapy,pain,medication,othermed,depression,autism,add,cholesterol,othercholesterol,bloodpressure,infectiousdisease,otherdisease,heartdisease,lupus,psoriasis,arthritis,sjogrens,sclerosis,fibromyalgia,chronicfatigue,addinsons,thyroid,seizure,kidneystones,asthma,cirrhosis,ankylosing,hiv,hepatitis,diabetes,aneurysm,bloodclot,hemophilia,anemia,allergies,otherallergies,smoker,alzheimer,concussion,concussiondate,otherconditions,prescriptionmeds,followup,researchconsent,signature1,donorconsent,signature2,age,bmi,reg_method,pname,autoimmune,barcode \n";//Column headers
 //foreach ($data_array as $record){
-	
+
 /*ADD DATA TO $csv VARIABLE*/
-    $csv.= $data_array[0] . 
-','.$data_array[1] . 
-','.$data_array[2] . 
-','.$data_array[3] . 
-','.$data_array[4] . 
-','.$data_array[5] . 
-','.$data_array[6] . 
-','.$data_array[7] . 
-','.$data_array[8] . 
-','.$data_array[9] . 
-','.$data_array[10] . 
-','.$data_array[11] . 
-','.$data_array[12] . 
-','.$data_array[13] . 
-','.$data_array[14] . 
-','.$data_array[15] . 
-','.$data_array[16] . 
-','.$data_array[17] . 
-','.$data_array[18] . 
-','.$data_array[19] . 
-','.$data_array[20] . 
-','.$data_array[21] . 
-','.$data_array[22] . 
-','.$data_array[23] . 
-','.$data_array[24] . 
-','.$data_array[25] . 
-','.$data_array[26] . 
-','.$data_array[27] . 
-','.$data_array[28] . 
-','.$data_array[29] . 
-','.$data_array[30] . 
-','.$data_array[31] . 
-','.$data_array[32] . 
-','.$data_array[33] . 
-','.$data_array[34] . 
-','.$data_array[35] . 
-','.$data_array[36] . 
-','.$data_array[37] . 
-','.$data_array[38] . 
-','.$data_array[39] . 
-','.$data_array[40] . 
-','.$data_array[41] . 
-','.$data_array[42] . 
-','.$data_array[43] . 
-','.$data_array[44] . 
-','.$data_array[45] . 
-','.$data_array[46] . 
-','.$data_array[47] . 
-','.$data_array[48] . 
-','.$data_array[49] . 
-','.$data_array[50] . 
-','.$data_array[51] . 
-','.$data_array[52] . 
-','.$data_array[53] . 
-','.$data_array[54] . 
-','.$data_array[55] . 
-','.$data_array[56] . 
-','.$data_array[57] . 
-','.$data_array[58] . 
-','.$data_array[59] . 
-','.$data_array[60] . 
-','.$data_array[61] . 
-','.$data_array[62] . 
-','.$data_array[63] . 
-','.$data_array[64] . 
-','.$data_array[65] . 
-','.$data_array[66] . 
-','.$data_array[67] . 
-','.$data_array[68] . 
-','.$data_array[69] . 
-','.$data_array[70] . 
-','.$data_array[71] . 
-','.$data_array[72] . 
-','.$data_array[73] . 
-','.$data_array[74] . 
-','.$data_array[75] . 
-','.$data_array[76] . 
-','.$data_array[77] . 
-','.$data_array[78] . 
-','.$data_array[79] . 
-','.$data_array[80] . 
-	"\n"; 
+    $csv.= $data_array[0] .
+','.$data_array[1] .
+','.$data_array[2] .
+','.$data_array[3] .
+','.$data_array[4] .
+','.$data_array[5] .
+','.$data_array[6] .
+','.$data_array[7] .
+','.$data_array[8] .
+','.$data_array[9] .
+','.$data_array[10] .
+','.$data_array[11] .
+','.$data_array[12] .
+','.$data_array[13] .
+','.$data_array[14] .
+','.$data_array[15] .
+','.$data_array[16] .
+','.$data_array[17] .
+','.$data_array[18] .
+','.$data_array[19] .
+','.$data_array[20] .
+','.$data_array[21] .
+','.$data_array[22] .
+','.$data_array[23] .
+','.$data_array[24] .
+','.$data_array[25] .
+','.$data_array[26] .
+','.$data_array[27] .
+','.$data_array[28] .
+','.$data_array[29] .
+','.$data_array[30] .
+','.$data_array[31] .
+','.$data_array[32] .
+','.$data_array[33] .
+','.$data_array[34] .
+','.$data_array[35] .
+','.$data_array[36] .
+','.$data_array[37] .
+','.$data_array[38] .
+','.$data_array[39] .
+','.$data_array[40] .
+','.$data_array[41] .
+','.$data_array[42] .
+','.$data_array[43] .
+','.$data_array[44] .
+','.$data_array[45] .
+','.$data_array[46] .
+','.$data_array[47] .
+','.$data_array[48] .
+','.$data_array[49] .
+','.$data_array[50] .
+','.$data_array[51] .
+','.$data_array[52] .
+','.$data_array[53] .
+','.$data_array[54] .
+','.$data_array[55] .
+','.$data_array[56] .
+','.$data_array[57] .
+','.$data_array[58] .
+','.$data_array[59] .
+','.$data_array[60] .
+','.$data_array[61] .
+','.$data_array[62] .
+','.$data_array[63] .
+','.$data_array[64] .
+','.$data_array[65] .
+','.$data_array[66] .
+','.$data_array[67] .
+','.$data_array[68] .
+','.$data_array[69] .
+','.$data_array[70] .
+','.$data_array[71] .
+','.$data_array[72] .
+','.$data_array[73] .
+','.$data_array[74] .
+','.$data_array[75] .
+','.$data_array[76] .
+','.$data_array[77] .
+','.$data_array[78] .
+','.$data_array[79] .
+','.$data_array[80] .
+','.$data_array[81] .
+','.$data_array[82] .
+','.$data_array[83] .
+	"\n";
 //Append data to csv
 //    }
 
@@ -284,7 +294,7 @@ $csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,
 
 
 /*CREATE CSV HANDLER OBJECT WITH FOPEN - USE time() TO MAKE EACH FILE UNIQUE*/
-$csv_handler = fopen ("/var/www/html/csvfile".time().".csv",'w');
+$csv_handler = fopen ("/var/www/html/drive/csvfile".time().".csv",'w');
 
 /*WRITE DATA TO CSV FILE AND CLOSE THE FILE*/
 fwrite ($csv_handler,$csv);
@@ -345,17 +355,17 @@ $authString = base64_encode("$public:$secret");
 $name = $fname . ' ' . $lname;
 
 
-//if ($reg_method = "drive"){
+if ($reg_method == "drive"){
 	$list_num = 44;
 	$api_url = 'https://api.simplycast.com/crossmarketer/18047/inbound/930 HTTP/1.1';
-//}
-//else {
-//	$list_num = 20;
-//	$api_url = 'https://api.simplycast.com/crossmarketer/12853/inbound/881 HTTP/1.1';
-//}
+}
+else {
+	$list_num = 20;
+	$api_url = 'https://api.simplycast.com/crossmarketer/12853/inbound/881 HTTP/1.1';
+}
 
 
-$fields = array(	
+$fields = array(
    'contact' => array(
 		'fields' => array (
 			0 => array(
@@ -454,7 +464,7 @@ curl_setopt($curl, CURLOPT_PORT, 443);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
 //SET GET or POST
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST"); 
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($curl, CURLOPT_POST, 1);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $postvars);
 
@@ -466,11 +476,11 @@ $registrant_id = $json->contact->id;
 
 
 
-$size = $json->contact->lists->{$list_num}->size;	
+$size = $json->contact->lists->{$list_num}->size;
 
 //NOW THAT WE KNOW THE REGISTRANT ID, PASS IT TO THE Push a Contact or List to a 360 Inbound API Connection ElementEndpoint: POST crossmarketer/{project id}/inbound/{connection id} METHOD
-$fields2 = array(	
-'row' => 
+$fields2 = array(
+'row' =>
 	array(
      'list' => $list_num,
      'row' => $registrant_id,
@@ -498,7 +508,7 @@ curl_setopt($curl2, CURLOPT_PORT, 443);
 curl_setopt($curl2, CURLOPT_SSL_VERIFYPEER, false);
 
 //SET GET or POST
-curl_setopt($curl2, CURLOPT_CUSTOMREQUEST, "POST"); 
+curl_setopt($curl2, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($curl2, CURLOPT_POST, 1);
 curl_setopt($curl2, CURLOPT_POSTFIELDS, $postvars2);
 
@@ -515,7 +525,7 @@ curl_close($curl2);
 
 <!-- WHEN PROCESSING IS COMPLETE TRANSFER REGISTRANTS TO THE THANK YOU PAGE -->
 <script type="text/javascript">
- window.location = "http://www.hemeos.com/thanks-2-you.html";
+ window.location = "http://www.hemeos.com/";
 </script>
 
 </body>

@@ -2,7 +2,20 @@ $(document).ready(function(){
 
 	//Form Validation
 	$("#hemeosform").validate({
+		  invalidHandler: function(event, validator) {
+			    // 'this' refers to the form
+			    var errors = validator.numberOfInvalids();
+			    if (errors) {
+			      var message = errors == 1
+			        ? 'You missed 1 field. It has been highlighted'
+			        : 'You missed ' + errors + ' fields. They have been highlighted.';
+			      //console.log(message);
+			      alert(message);
+			      validator.focusInvalid();
+			    } 
+			  },
 		rules: {
+			barcode: "required",
 			fname: "required",
 			lname: "required",
 			email: {
@@ -18,17 +31,13 @@ $(document).ready(function(){
 			zip: "required",
 			altfname: "required",
 			altlname: "required",
-			altemail: {
-				required: true,
-				email: true
-			},
 			altphone: "required",
 			altrelationship: "required",
 			agreement1: "required",
-			agreement2: "required",
-			agreement3: "required",
-			agreement4: "required",
-			agreement5: "required", 
+			//agreement2: "required",
+			//agreement3: "required",
+			//agreement4: "required",
+			//agreement5: "required", 
 			dob: {
 				required: true,
 				date: true
@@ -36,16 +45,13 @@ $(document).ready(function(){
 			sex: "required",
 			height: "required",
 			weight: "required",
-			lang: "required",
+			//lang: "required",
 			reference: "required",
 			ethnicity: { 
                 required: true, 
                 minlength: 1 
 	        } ,
-	    	registry: { 
-	            required: true, 
-	            minlength: 1 
-	    	}, 
+	    	registry: "required", 
 			tia: "required",
 			cancer: "required",
 			therapy: "required",
@@ -58,22 +64,13 @@ $(document).ready(function(){
 			bloodpressure: "required",
 			infectiousdisease: "required",
 			heartdisease: "required",
-			lupus: "required",
-			psoriasis: "required",
 			arthritis: "required",
-			sjogrens: "required",
-			sclerosis: "required",
-			fibromyalgia: "required",
 			chronicfatigue: "required",
-			addinsons: "required",
-			thyroid: "required",
 			seizure: "required",
 			kidneystones: "required",
 			asthma: "required",
-			cirrhosis: "required",
-			ankylosing: "required",
-			hiv: "required",
-			hepatitis: "required",
+			//hiv: "required",
+			//hepatitis: "required",
 			diabetes: "required",
 			aneurysm: "required",
 			bloodclot: "required",
@@ -83,11 +80,11 @@ $(document).ready(function(){
 			smoker: "required",
 			alzheimer: "required",
 			concussion: "required",
-			followup: "required",
+			//followup: "required",
 			researchconsent: "required",
 			signature1: "required",
-			donorconsent: "required",
-			signature2: "required"		
+			donorconsent: "required"
+			//signature2: "required"
 		}
 	});
 	
@@ -115,6 +112,17 @@ $(document).ready(function(){
 	$("#phone").mask("+1 (999) 999-9999");
 	$("#altphone").mask("+1 (999) 999-9999");	
 	
+	//Datepicker
+    $( "#dob" ).datepicker({
+      dateFormat : 'yy-mm-dd',
+      yearRange: '-100y:c+nn',
+      changeMonth: true,
+      changeYear: true
+    });
+    
+
+    
+
 	//Hidden Steps
 	$('#step2').hide();
 	$('#step3').hide();
@@ -133,30 +141,7 @@ $(document).ready(function(){
         } else {
             // do stuff if form is not valid
         }	
-		
-	/*	if (ss.isInvalid())
-			{
-			alert("The address is considered invalid. Please verify address.");
-			}
-		if (ss.isAmbiguous())
-		{
-		alert("The address is considered ambiguous. Please verify address.");
-		}
-		if (ss.isMissingSecondary())
-		{
-		alert("The address is valid, but is missing a secondary (unit/apartment/suite) number.");
-		}
-		if (ss.isValid())
-		{
-			 if($("#hemeosform").valid()){ 
-				 	$('#step2').show();
-					$('#step1').hide();
-					$("body").scrollTop(0);
-		        } else {
-		            // do stuff if form is not valid
-		        }	
-		}
-		*/	
+	
 	});
 	$('#previous1').click(function(){
 		$('#step1').show();
@@ -177,87 +162,12 @@ $(document).ready(function(){
 		$('#step3').hide();
 		$("body").scrollTop(0);
 	});
-	$('#next3').click(function(){
-		if($("#hemeosform").valid()){ 
-			$('#step4').show();
-			$('#step3').hide();
-			$("body").scrollTop(0);
-        } else {
-            // do stuff if form is not valid
-        }	
-	});
-	$('#previous3').click(function(){
-		$('#step3').show();
-		$('#step4').hide();
-		$("body").scrollTop(0);
-	});
-	$('#next4').click(function(){
-		if($("#hemeosform").valid()){ 
-			$('#step5').show();
-			$(".scrollcontainer").mCustomScrollbar({
-				scrollbarPosition: 'outside'
-			});
-			$('#step4').hide();
-			$("body").scrollTop(0);
-        } else {
-            // do stuff if form is not valid
-        }	
-		
-	});
-	$('#previous4').click(function(){
-		$('#step4').show();
-		$('#step5').hide();
-		$("body").scrollTop(0);
-	});
-	$('#next5').click(function(){
-		if($("#hemeosform").valid()){ 
-			$('#step6').show();
-			$('#step5').hide();	
-			$("body").scrollTop(0);
-        } else {
-            // do stuff if form is not valid
-        }	
-		
-	});
-	$('#previous5').click(function(){
-		$('#step5').show();
-		$('#step6').hide(); 
-		$("body").scrollTop(0);
-	});
-	$('#next6').click(function(){
-		if($("#hemeosform").valid()){ 
-			$('#step7').show();
-			$('#step6').hide();	
-			$("body").scrollTop(0);
-        } else {
-            // do stuff if form is not valid
-        }	
-		
-	});
-	$('#previous6').click(function(){
-		$('#step6').show();
-		$('#step7').hide(); 
-		$("body").scrollTop(0);
-	});
-	$('#next7').click(function(){
-		if($("#hemeosform").valid()){ 
-			$('#step8').show();
-			$('#step7').hide();	
-			$("body").scrollTop(0);
-        } else {
-            // do stuff if form is not valid
-        }	
-	});
-	$('#previous7').click(function(){
-		$('#step7').show();
-		$('#step8').hide(); 
-		$("body").scrollTop(0);
-	});
-
 	
 	$('.popup').click(function(){
 		$("#terms").scrollTop("0");
 		$("#privacy").scrollTop("0");
 	});
 });
+
+
 

@@ -1,52 +1,53 @@
 
 <?php
 
-//Initial Error Checking 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//Initial Error Checking
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+date_default_timezone_set('UTC');
 
 class Db {
-    
+
     // Database connection
     protected static $connection;
 
     /**
      * Connect to the database
-     * 
+     *
      * @return err on failure / mysqli MySQLi object instance on success
      */
-    public function connect() {    
-        
+    public function connect() {
+
         // Connect to Hemeos Database
         if(!isset(self::$connection)) {
-            // Load configuration as an array. 
-            $config = parse_ini_file('../../config.ini'); 
+            // Load configuration as an array.
+            $config = parse_ini_file('../../config.ini');
            self::$connection = new mysqli($config['host'],$config['username'],$config['password'],$config['dbname'],$config['port']);
-          echo 'Connected to Hemeos Database, ';
+        //  echo 'Connected to Hemeos Database, ';
         }
 
         // If connection was not successful, handle the error
         if(self::$connection === false) {
-            // Handle error 
-            echo 'This Connection Failed, ';
-    		die();           
+            // Handle error
+        //    echo 'This Connection Failed, ';
+    		die();
         }
-        
+
         return self::$connection;
     }
 
     public function finder() {
     	// Connect to the database
     	$connection = $this -> connect();
-    
+
     	// Find last ID
     	$last_id = $connection -> insert_id;
-    
+
     	return $last_id;
     }
-    
-    
+
+
     /**
      * Query the database
      *
@@ -57,9 +58,9 @@ class Db {
         // Connect to the database
         $connection = $this -> connect();
 
-        // Query the database 
+        // Query the database
         $result = $connection -> query($query);
-        
+
         return $result;
     }
 
@@ -73,9 +74,9 @@ class Db {
         $rows = array();
         $result = $this -> query($query);
         if($result === false) {
-             echo 'Failed to retrieve rows from database';
+        //     echo 'Failed to retrieve rows from database';
         }
-        echo 'here';
+        //echo 'here';
         while ($row = $result -> fetch_assoc()) {
             $rows[] = $row;
         }
@@ -84,7 +85,7 @@ class Db {
 
     /**
      * Fetch the last error from the database
-     * 
+     *
      * @return string Database error message
      */
     public function error() {
@@ -95,7 +96,7 @@ class Db {
     /**
      * Quote and escape value for use in a database query
      *
-     * @param string $value 
+     * @param string $value
      * @return string The quoted and escaped string
      */
     public function quote($value) {
@@ -106,7 +107,7 @@ class Db {
 }
 
 // Create database object
-$db = new Db();    
+$db = new Db();
 
 /**
  * Quote and escape registration form submitted values
@@ -188,8 +189,481 @@ $reg_method = $db -> quote($_POST['reg_method']);
 $barcode = $db -> quote($_POST['barcode']); //Only for drive registration
 
 //Additional variable metrics
-$age = 30;
-$bmi = 100;
+//$age = 30;
+//$bmi = 100;
+
+/**
+ * Simple PHP age Calculator
+ *
+ * Calculate and returns age based on the date provided by the user.
+ * @param   date of birth('Format:yyyy-mm-dd').
+ * @return  age based on date of birth
+ */
+function ageCalculator($dob){
+	if(!empty($dob)){
+		$birthdate = new DateTime($dob);
+		$today   = new DateTime('today');
+		$age = $birthdate->diff($today)->y;
+		return $age;
+	} else{
+		return 0;
+	}
+}
+
+if (isset($_POST["dob"])) {$dob2=$_POST["dob"];}  else{$dob2= " ";}
+$age = ageCalculator($dob2);
+
+if (isset($_POST["height"])) {$height2=$_POST["height"];}  else{$height2= " ";}
+if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
+
+$bmi = 703*($weight2/pow((int)$height2,2));
+
+/*Determine Demographic Eligibility*/
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) {
+    $registry_ind = TRUE;
+} else {
+	$registry_ind = FALSE;
+}
+
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) {
+    $ethnicity_ind = TRUE;
+} else {
+	$ethnicity_ind = FALSE;
+}
+
+
+if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $asthma == 'no' && $diabetes == 'no' && $heartdisease == 'no' && $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
+	$medical_eligible = 1;
+} else {
+	$medical_eligible = 0;
+}
+
+if (18 <= $age && $age <= 29 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
+	$demographic_eligible = 1;
+} else {
+	$demographic_eligible = 0;
+}
+
+if (in_array($state,array('DC','VA','MD'))) {
+	$geographic_eligible = 1;
+} else {
+	$geographic_eligible = 0;
+}
+
+/*Backfill CSV files to keep them consistent before we deprecate them*/
+if (isset($_POST["altemail"])) {$altemail=$_POST["altemail"];}  else{$altemail= " ";}
+if (isset($_POST["agreement1"])) {$agreement1=$_POST["agreement1"];}  else{$agreement1= " ";}
+if (isset($_POST["agreement2"])) {$agreement2=$_POST["agreement2"];}  else{$agreement2= " ";}
+if (isset($_POST["agreement3"])) {$agreement3=$_POST["agreement3"];}  else{$agreement3= " ";}
+if (isset($_POST["agreement4"])) {$agreement4=$_POST["agreement4"];}  else{$agreement4= " ";}
+if (isset($_POST["agreement5"])) {$agreement5=$_POST["agreement5"];}  else{$agreement5= " ";}
+if (isset($_POST["lang"])) {$lang=$_POST["lang"];}  else{$lang= " ";}
+if (isset($_POST["othercancer"])) {$othercancer=$_POST["othercancer"];}  else{$othercancer= " ";}
+if (isset($_POST["othermed"])) {$othermed=$_POST["othermed"];}  else{$othermed= " ";}
+if (isset($_POST["othercholesterol"])) {$othercholesterol=$_POST["othercholesterol"];}  else{$othercholesterol= " ";}
+if (isset($_POST["bloodpressure"])) {$bloodpressure=$_POST["bloodpressure"];}  else{$bloodpressure= " ";}
+if (isset($_POST["lupus"])) {$lupus=$_POST["lupus"];}  else{$lupus= " ";}
+if (isset($_POST["psoriasis"])) {$psoriasis=$_POST["psoriasis"];}  else{$psoriasis= " ";}
+if (isset($_POST["sjogrens"])) {$sjogrens=$_POST["sjogrens"];}  else{$sjogrens= " ";}
+if (isset($_POST["sclerosis"])) {$sclerosis=$_POST["sclerosis"];}  else{$sclerosis= " ";}
+if (isset($_POST["fibromyalgia"])) {$fibromyalgia=$_POST["fibromyalgia"];}  else{$fibromyalgia= " ";}
+if (isset($_POST["addinsons"])) {$addinsons=$_POST["addinsons"];}  else{$addinsons= " ";}
+if (isset($_POST["thyroid"])) {$thyroid=$_POST["thyroid"];}  else{$thyroid= " ";}
+if (isset($_POST["cirrhosis"])) {$cirrhosis=$_POST["cirrhosis"];}  else{$cirrhosis= " ";}
+if (isset($_POST["ankylosing"])) {$ankylosing=$_POST["ankylosing"];}  else{$ankylosing= " ";}
+if (isset($_POST["hiv"])) {$hiv=$_POST["hiv"];}  else{$hiv= " ";}
+if (isset($_POST["hepatitis"])) {$hepatitis=$_POST["hepatitis"];}  else{$hepatitis= " ";}
+if (isset($_POST["otherallergies"])) {$otherallergies=$_POST["otherallergies"];}  else{$otherallergies= " ";}
+if (isset($_POST["concussiondate"])) {$concussiondate=$_POST["concussiondate"];}  else{$concussiondate= " ";}
+if (isset($_POST["followup"])) {$followup=$_POST["followup"];}  else{$followup= " ";}
+if (isset($_POST["signature1"])) {$signature1=$_POST["signature1"];}  else{$signature1= " ";}
+if (isset($_POST["signature2"])) {$signature2=$_POST["signature2"];}  else{$signature2= " ";}
+if (isset($_POST["otherdisease"])) {$otherdisease=$_POST["otherdisease"];}  else{$otherdisease= " ";}
+
+/*ORGANIZE FIELDS INTO A DATA ARRAY FOR CSV DUMP*/
+$data_array = array (
+            $fname,
+			$lname,
+			$email,
+			$phone,
+			$street1,
+			$street2,
+			$city,
+			$state,
+			$country,
+			$zip,
+			$altfname,
+			$altlname,
+			$altemail,
+			$altphone,
+			$altrelationship,
+			$agreement1,
+			$agreement2,
+			$agreement3,
+			$agreement4,
+			$agreement5,
+			$dob,
+			$sex,
+			$height,
+			$weight,
+			$lang,
+			$reference,
+			$ethnicity,
+			$registry,
+			$tia,
+			$cancer,
+			$othercancer,
+			$therapy,
+			$pain,
+			$medication,
+			$othermed,
+			$depression,
+			$autism,
+			$add,
+			$cholesterol,
+			$othercholesterol,
+			$bloodpressure,
+			$infectiousdisease,
+			$otherdisease,
+			$heartdisease,
+			$lupus,
+			$psoriasis,
+			$arthritis,
+			$sjogrens,
+			$sclerosis,
+			$fibromyalgia,
+			$chronicfatigue,
+			$addinsons,
+			$thyroid,
+			$seizure,
+			$kidneystones,
+			$asthma,
+			$cirrhosis,
+			$ankylosing,
+			$hiv,
+			$hepatitis,
+			$diabetes,
+			$aneurysm,
+			$bloodclot,
+			$hemophilia,
+			$anemia,
+			$allergies,
+			$otherallergies,
+			$smoker,
+			$alzheimer,
+			$concussion,
+			$concussiondate,
+			$otherconditions,
+			$prescriptionmeds,
+			$followup,
+			$researchconsent,
+			$signature1,
+			$donorconsent,
+			$signature2,
+			$age,
+			$bmi,
+			$reg_method,
+      $pname,
+      $autoimmune,
+      $barcode
+            );
+
+/*CREATE HEADERS FOR CSV FILE*/
+$csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,altlname,altemail,altphone,altrelationship,agreement1,agreement2,agreement3,agreement4,agreement5,dob,sex,height,weight,lang,reference,ethnicity,registry,tia,cancer,othercancer,therapy,pain,medication,othermed,depression,autism,add,cholesterol,othercholesterol,bloodpressure,infectiousdisease,otherdisease,heartdisease,lupus,psoriasis,arthritis,sjogrens,sclerosis,fibromyalgia,chronicfatigue,addinsons,thyroid,seizure,kidneystones,asthma,cirrhosis,ankylosing,hiv,hepatitis,diabetes,aneurysm,bloodclot,hemophilia,anemia,allergies,otherallergies,smoker,alzheimer,concussion,concussiondate,otherconditions,prescriptionmeds,followup,researchconsent,signature1,donorconsent,signature2,age,bmi,reg_method,pname,autoimmune,barcode \n";//Column headers
+//foreach ($data_array as $record){
+
+/*ADD DATA TO $csv VARIABLE*/
+    $csv.= $data_array[0] .
+','.$data_array[1] .
+','.$data_array[2] .
+','.$data_array[3] .
+','.$data_array[4] .
+','.$data_array[5] .
+','.$data_array[6] .
+','.$data_array[7] .
+','.$data_array[8] .
+','.$data_array[9] .
+','.$data_array[10] .
+','.$data_array[11] .
+','.$data_array[12] .
+','.$data_array[13] .
+','.$data_array[14] .
+','.$data_array[15] .
+','.$data_array[16] .
+','.$data_array[17] .
+','.$data_array[18] .
+','.$data_array[19] .
+','.$data_array[20] .
+','.$data_array[21] .
+','.$data_array[22] .
+','.$data_array[23] .
+','.$data_array[24] .
+','.$data_array[25] .
+','.$data_array[26] .
+','.$data_array[27] .
+','.$data_array[28] .
+','.$data_array[29] .
+','.$data_array[30] .
+','.$data_array[31] .
+','.$data_array[32] .
+','.$data_array[33] .
+','.$data_array[34] .
+','.$data_array[35] .
+','.$data_array[36] .
+','.$data_array[37] .
+','.$data_array[38] .
+','.$data_array[39] .
+','.$data_array[40] .
+','.$data_array[41] .
+','.$data_array[42] .
+','.$data_array[43] .
+','.$data_array[44] .
+','.$data_array[45] .
+','.$data_array[46] .
+','.$data_array[47] .
+','.$data_array[48] .
+','.$data_array[49] .
+','.$data_array[50] .
+','.$data_array[51] .
+','.$data_array[52] .
+','.$data_array[53] .
+','.$data_array[54] .
+','.$data_array[55] .
+','.$data_array[56] .
+','.$data_array[57] .
+','.$data_array[58] .
+','.$data_array[59] .
+','.$data_array[60] .
+','.$data_array[61] .
+','.$data_array[62] .
+','.$data_array[63] .
+','.$data_array[64] .
+','.$data_array[65] .
+','.$data_array[66] .
+','.$data_array[67] .
+','.$data_array[68] .
+','.$data_array[69] .
+','.$data_array[70] .
+','.$data_array[71] .
+','.$data_array[72] .
+','.$data_array[73] .
+','.$data_array[74] .
+','.$data_array[75] .
+','.$data_array[76] .
+','.$data_array[77] .
+','.$data_array[78] .
+','.$data_array[79] .
+','.$data_array[80] .
+','.$data_array[81] .
+','.$data_array[82] .
+','.$data_array[83] .
+	"\n";
+//Append data to csv
+//    }
+
+/*CREATE CSV HANDLER OBJECT WITH FOPEN - USE time() TO MAKE EACH FILE UNIQUE*/
+//$csv_handler = fopen ("csvfile".time().".csv",'w');
+
+
+/*CREATE CSV HANDLER OBJECT WITH FOPEN - USE time() TO MAKE EACH FILE UNIQUE*/
+$csv_handler = fopen ("/var/www/html/drive/csvfile".time().".csv",'w');
+
+/*WRITE DATA TO CSV FILE AND CLOSE THE FILE*/
+fwrite ($csv_handler,$csv);
+fclose ($csv_handler);
+
+
+/*WRITE DATA TO CSV FILE AND CLOSE THE FILE*/
+//fwrite ($csv_handler,$csv);
+//fclose ($csv_handler);
+
+/*BEGIN TRANSFERING DATA TO SIMPLYCAST API*/
+/*API DOCUMENTATION CAN BE FOUND HERE: https://app.simplycast.com/?q=api/reference*/
+
+
+
+$curl = curl_init();
+
+$public = 'c2c64e977da4aff112bda378d76ce39265c65f96';
+$secret = '8081b7551046b5e027363d223076000fad403760';
+
+//When using SSL/TLS, you can simply pass your credentials as
+//{public key}:{secret key}, rather than creating a signature (though you
+//can still create a signature if you desire the additional security).
+$authString = base64_encode("$public:$secret");
+
+$name = $fname . ' ' . $lname;
+
+
+if ($reg_method == "drive"){
+	$list_num = 44;
+	$api_url = 'https://api.simplycast.com/crossmarketer/18047/inbound/930 HTTP/1.1';
+}
+else {
+	$list_num = 20;
+	$api_url = 'https://api.simplycast.com/crossmarketer/12853/inbound/881 HTTP/1.1';
+}
+
+if (isset($_POST["email"])) {$email2=$_POST["email"];}  else{$email2= " ";}
+if (isset($_POST["phone"])) {$phone2=$_POST["phone"];}  else{$phone2= " ";}
+
+$fields = array(
+   'contact' => array(
+		'fields' => array (
+			0 => array(
+			 'id' => '1',
+			 'value' => $name,
+			),
+			1 => array(
+			 'id' => '23',
+			 'value' => $email2,
+			),
+			2 => array(
+			 'id' => '47',
+			 'value' => $phone2,
+			),
+			3 => array(
+			 'id' => '55',
+			 'value' => $phone2,
+			),
+			4 => array(
+			 'id' => '5',
+			 'value' => $street1,
+			),
+			5 => array(
+			 'id' => '6',
+			 'value' => $street2,
+			),
+			6 => array(
+			 'id' => '8',
+			 'value' => $city,
+			),
+			7 => array(
+			 'id' => '9',
+			 'value' => $state,
+			),
+			8 => array(
+			 'id' => '10',
+			 'value' => $zip,
+			),
+			9 => array(
+			 'id' => '7',
+			 'value' => $country,
+			),
+			10 => array(
+			 'id' => '101',
+			 'value' => $phone2,
+			),
+			11 => array(
+			 'id' => '115',
+			 'value' => $medical_eligible,
+			),
+			12 => array(
+			 'id' => '116',
+			 'value' => $demographic_eligible,
+			),
+			13 => array(
+			 'id' => '118',
+			 'value' => $geographic_eligible,
+			),
+			14 => array(
+			 'id' => '139',
+			 'value' => $medical_eligible,
+			),
+			15 => array(
+			 'id' => '143',
+			 'value' => $demographic_eligible,
+			),
+			16 => array(
+			 'id' => '140',
+			 'value' => $geographic_eligible,
+			),
+		),
+  		'lists' => array(
+			0 => $list_num,
+			),
+  ),
+
+);
+
+$postvars = json_encode($fields);
+
+//Build the request headers.
+$headers = array(
+  "Host: api.simplycast.com",
+  "Connection: close",
+  "Accept: application/json",
+  "Authorization: Basic $authString",
+   "Content-Type: application/json",
+  "Content-Length: " . strlen($postvars)
+);
+
+curl_setopt($curl, CURLOPT_URL, 'https://api.simplycast.com/contactmanager/contacts HTTP/1.1');
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl,CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_PORT, 443);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+//SET GET or POST
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($curl, CURLOPT_POST, 1);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $postvars);
+
+$result = curl_exec($curl);
+curl_close($curl);
+
+$json = json_decode($result);
+$registrant_id = $json->contact->id;
+
+
+
+$size = $json->contact->lists->{$list_num}->size;
+
+//NOW THAT WE KNOW THE REGISTRANT ID, PASS IT TO THE Push a Contact or List to a 360 Inbound API Connection ElementEndpoint: POST crossmarketer/{project id}/inbound/{connection id} METHOD
+$fields2 = array(
+'row' =>
+	array(
+     'list' => $list_num,
+     'row' => $registrant_id,
+	),
+);
+
+$postvars2 = json_encode($fields2);
+
+$curl2 = curl_init();
+
+$headers2 = array(
+  "Host: api.simplycast.com",
+  "Connection: close",
+  "Accept: application/json",
+  "Authorization: Basic $authString",
+   "Content-Type: application/json",
+  "Content-Length: " . strlen($postvars2)
+);
+
+curl_setopt($curl2, CURLOPT_URL, $api_url);
+curl_setopt($curl2, CURLOPT_HTTPHEADER, $headers2);
+curl_setopt($curl2, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl2,CURLOPT_HEADER, false);
+curl_setopt($curl2, CURLOPT_PORT, 443);
+curl_setopt($curl2, CURLOPT_SSL_VERIFYPEER, false);
+
+//SET GET or POST
+curl_setopt($curl2, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($curl2, CURLOPT_POST, 1);
+curl_setopt($curl2, CURLOPT_POSTFIELDS, $postvars2);
+
+$result = curl_exec($curl2);
+curl_close($curl2);
+
+//    if($result === false)
+//    {
+//        echo "Error Number:".curl_errno($curl)."<br>";
+//        echo "Error String:".curl_error($curl);
+//    }
+
+
 
 /**
  * Insert the values into the database
@@ -225,13 +699,13 @@ $result = $db -> query("INSERT INTO `donor_contact` (
 			)");
 if($result)
 {
-	echo "donor_contact table successfully inserted, ";
+//	echo "donor_contact table successfully inserted, ";
 	$last_id = $db -> finder();
 }
 else
 {
-	echo "Error: Insert to donor_contact table, ";
-	echo $db->error();
+//	echo "Error: Insert to donor_contact table, ";
+//	echo $db->error();
 }
 
 //alternate_contact table
@@ -252,12 +726,12 @@ $result = $db -> query("INSERT INTO `alternate_contact` (
 
 if($result)
 {
-	echo "alternate_contact table successfully inserted, ";
+//	echo "alternate_contact table successfully inserted, ";
 }
 else
 {
-	echo "Error: Insert to alternate_contact table, ";
-	echo $db->error();
+//	echo "Error: Insert to alternate_contact table, ";
+//	echo $db->error();
 }
 
 //donor_info table
@@ -287,17 +761,17 @@ $result = $db -> query("INSERT INTO `donor_info` (
 				" . $reference . ",
 				" . $registry . ",
 				" . $registryinfo . ",
-				" . $reg_method . "		
+				" . $reg_method . "
 			)");
 
 if($result)
 {
-	echo "donor_info table successfully inserted, ";
+//	echo "donor_info table successfully inserted, ";
 }
 else
 {
-	echo "Error: Insert to donor_info table, ";
-	echo $db->error();
+//	echo "Error: Insert to donor_info table, ";
+//	echo $db->error();
 }
 
 //health_info table
@@ -354,7 +828,7 @@ $result = $db -> query("INSERT INTO `health_info` (
 				" . $infectiousdisease . ",
 				" . $infectiousdiseaseinfo . ",
 				" . $heartdisease . ",
-				" . $heartdiseaseinfo . ",		
+				" . $heartdiseaseinfo . ",
 				" . $arthritis . ",
 				" . $chronicfatigue . ",
 				" . $seizure . ",
@@ -362,7 +836,7 @@ $result = $db -> query("INSERT INTO `health_info` (
 				" . $kidneystones . ",
 				" . $asthma . ",
 				" . $diabetes . ",
-				" . $diabetesinfo . ",		
+				" . $diabetesinfo . ",
 				" . $aneurysm . ",
 				" . $bloodclot . ",
 				" . $hemophilia . ",
@@ -373,20 +847,20 @@ $result = $db -> query("INSERT INTO `health_info` (
 				" . $alzheimer . ",
 				" . $concussion . ",
 				" . $concussioninfo . ",
-				" . $autoimmune . ",	
-				" . $autoimmuneinfo . ",	
+				" . $autoimmune . ",
+				" . $autoimmuneinfo . ",
 				" . $otherconditions . ",
 				" . $prescriptionmeds . "
 			)");
 
 if($result)
 {
-	echo "health_info table successfully inserted, ";
+//	echo "health_info table successfully inserted, ";
 }
 else
 {
-	echo "Error: Insert to health_info table, ";
-	echo $db->error();
+//	echo "Error: Insert to health_info table, ";
+//	echo $db->error();
 }
 
 //donor_agreements table
@@ -406,12 +880,20 @@ $result = $db -> query("INSERT INTO `donor_agreements` (
 
 if($result)
 {
-	echo "donor_agreements table successfully inserted, ";
+//	echo "donor_agreements table successfully inserted, ";
 }
 else
 {
-	echo "Error: Insert to donor_agreements table, ";
-	echo $db->error();
+//	echo "Error: Insert to donor_agreements table, ";
+//	echo $db->error();
 }
 
 ?>
+
+<!-- WHEN PROCESSING IS COMPLETE TRANSFER REGISTRANTS TO THE THANK YOU PAGE -->
+<script type="text/javascript">
+  window.location = "http://www.hemeos.com/thanks.html";
+</script>
+
+</body>
+</html>

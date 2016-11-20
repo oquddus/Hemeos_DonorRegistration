@@ -235,7 +235,7 @@
     </div>
                 <div class="col-md-6 col-md-offset-3 ">		
           
-			    <form data-ajax="false" id="hemeosform" method="post" action="submit.php">
+			    <form data-ajax="false" id="hemeosform" method="post" action="donor_register.php">
 				      <div data-role="header" data-theme="c">
 	   					<h1></h1>
 	 				  </div>
@@ -447,7 +447,7 @@
 						
 						<div class="col-md-12 sec-row">
 						 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-							<div id="ifYes" style="display:none">
+							<div id="registry_if_yes" style="display:none">
 							<p>Please Select Registry:</p>
 									<select name="registry_info" id="registry_info" class="registry_info" >
 		                                 <option></option>
@@ -995,10 +995,10 @@
     					<div class="col-md-12">
                         	I have read the <a href="#terms" data-rel="popup" data-position-to="window" data-transition="fade">Terms of Use</a> and the <a href="#privacy" data-rel="popup" data-position-to="window" data-transition="fade">Privacy Policy</a> for my application to join the registry, which includes providing accurate information on the online registration form. 
                         </div>
-                       	<div class="col-md-12 sec-row">
+                        <div class="col-md-12 sec-row">
 								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-									<input type="radio" name="agreement1" id="agreement1" value="1" style="opacity:0">
-									<label for="agreement1">Yes</label>
+									<input type="radio" name="termsagreement" id="termsagreement" value="1" style="opacity:0">
+									<label for="termsagreement">Yes</label>
 								</fieldset>
 						</div>
 							<p>&nbsp;</p>
@@ -1009,8 +1009,8 @@
 						<div class="col-md-12 sec-row">
 						 	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 								<p>By entering my full name (First Middle Last) into the field below, I acknowledge that I have read, understand and agree with the above. I understand that my typewritten name in this field constitutes my electronic signature.<p>
-								<input type="text" name="signature1" id="signature1" placeholder="Please Sign Here">
-								<input type="hidden" name="reg_method" id="reg_method" value="drive">
+								<input type="text" name="signature" id="signature" placeholder="Please Sign Here">
+								<input type="hidden" name="reg_method" id="reg_method" value="online">
 							</fieldset>
 						</div>
 						<p>&nbsp;</p>

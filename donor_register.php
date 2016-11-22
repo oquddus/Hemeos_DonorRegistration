@@ -188,9 +188,6 @@ $signature = $db -> quote($_POST['signature']);
 $reg_method = $db -> quote($_POST['reg_method']);
 //$barcode = $db -> quote($_POST['barcode']); //Only for drive registration
 
-//Additional variable metrics
-//$age = 30;
-//$bmi = 100;
 
 /**
  * Simple PHP age Calculator
@@ -249,6 +246,108 @@ if (in_array($state,array('DC','VA','MD'))) {
 } else {
 	$geographic_eligible = 0;
 }
+
+//POST CONTACT TO INFUSIONSOT
+/*PROCESS FIELDS FROM FORM INTO PHP VARIABLES*/
+//PROCESSING THESE FIELDS SEPARATELY BECAUSE WE DON'T WANT THEM GOING INTO INFUSIONSOFT WITH QUOTES
+if (isset($_POST["pname"])) {$inf_field_Nickname=ucfirst($_POST["pname"]);}  else{$inf_field_Nickname= " ";}
+if (isset($_POST["fname"])) {$inf_field_FirstName=ucfirst($_POST["fname"]);}  else{$inf_field_FirstName= " ";}
+if (isset($_POST["lname"])) {$inf_field_LastName=ucfirst($_POST["lname"]);}  else{$inf_field_LastName= " ";}
+if (isset($_POST["email"])) {$inf_field_Email=$_POST["email"];}  else{$inf_field_Email= " ";}
+if (isset($_POST["phone"])) {$inf_field_Phone1=$_POST["phone"];}  else{$inf_field_Phone1= " ";}
+if (isset($_POST["street1"])) {$inf_field_StreetAddress1=$_POST["street1"];}  else{$inf_field_StreetAddress1= " ";}
+if (isset($_POST["street2"])) {$inf_field_StreetAddress2=$_POST["street2"];}  else{$inf_field_StreetAddress2= " ";}
+if (isset($_POST["city"])) {$inf_field_City=$_POST["city"];}  else{$inf_field_City= " ";}
+if (isset($_POST["state"])) {$inf_field_State=$_POST["state"];}  else{$inf_field_State= " ";}
+if (isset($_POST["zip"])) {$inf_field_PostalCode=$_POST["zip"];}  else{$inf_field_PostalCode= " ";}
+if (isset($_POST["country"])) {$inf_field_Country=$_POST["country"];}  else{$inf_field_Country= " ";}
+
+if (isset($_POST["dob"])) {$inf_field_Birthday=$_POST["dob"];}  else{$inf_field_Birthday= " ";}
+if (isset($_POST["reg_method"])) {$inf_custom_RegistrationMethod=$_POST["reg_method"];}  else{$inf_custom_RegistrationMethod= " ";}
+
+
+$inf_custom_MedicallyEligible = $medical_eligible;
+$inf_custom_DemographicallyEligible = $demographic_eligible;
+$inf_custom_GeographicallyEligible = $geographic_eligible;
+
+//POST TO ONLINE REGISTRATION URL
+$inf_form_xid = '15a6e84d3562cabb0b320dc68a6e1d3c';
+$inf_form_name = 'Online Registration';
+$infusionsoft_version = '1.59.0.51';
+
+
+//create cURL connection
+$curl_connection = curl_init();
+
+//create array of data to be posted
+$post_data['inf_form_xid'] = $inf_form_xid;
+$post_data['inf_form_name'] = $inf_form_name;
+$post_data['infusionsoft_version'] = $infusionsoft_version;
+$post_data['inf_field_Nickname'] = $inf_field_Nickname;
+$post_data['inf_field_FirstName'] = $inf_field_FirstName;
+$post_data['inf_field_LastName'] = $inf_field_LastName;
+$post_data['inf_field_Email'] = $inf_field_Email;
+$post_data['inf_field_Phone1'] = $inf_field_Phone1;
+$post_data['inf_field_StreetAddress1'] = $inf_field_StreetAddress1;
+$post_data['inf_field_StreetAddress2'] = $inf_field_StreetAddress2;
+$post_data['inf_field_City'] = $inf_field_City;
+$post_data['inf_field_State'] = $inf_field_State;
+$post_data['inf_field_PostalCode'] = $inf_field_PostalCode;
+$post_data['inf_field_Country'] = $inf_field_Country;
+$post_data['inf_custom_MedicallyEligible'] = $medical_eligible;
+$post_data['inf_custom_DemographicallyEligible'] = $demographic_eligible;
+$post_data['inf_custom_GeographicallyEligible'] = $geographic_eligible;
+$post_data['inf_field_Birthday'] = $inf_field_Birthday;
+$post_data['inf_custom_RegistrationMethod'] = $inf_custom_RegistrationMethod;
+
+//traverse array and prepare data for posting (key1=value1)
+foreach ( $post_data as $key => $value) {
+    $post_items[] = $key . '=' . urlencode($value);
+}
+
+//create the final string to be posted using implode()
+$post_string = implode ('&', $post_items);
+
+//$post_string = 'inf_form_xid=f0bca68295acb856ee10f80b08271149&inf_form_name=In+Person+Registration+-+Demo&infusionsoft_version=1.59.0.39&inf_field_FirstName=Jon+Fernandez+20161120854&inf_field_Email=Jonathan.A.Fernandez%40gmail.com';
+
+$url = "https://px340.infusionsoft.com/app/form/process/15a6e84d3562cabb0b320dc68a6e1d3c";
+
+$header[0] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+$header[] = "Cache-Control: max-age=0";
+$header[] = "Connection: keep-alive";
+$header[] = "Keep-Alive: 300";
+$header[] = "Accept-Encoding: gzip, deflate, br";
+$header[] = "Accept-Language: en-US,en;q=0.8";
+
+//set options
+curl_setopt($curl_connection,CURLOPT_URL, $url);
+curl_setopt($curl_connection, CURLOPT_POST, true);
+curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
+curl_setopt($curl_connection, CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl_connection, CURLOPT_HTTPHEADER, $header);
+curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl_connection, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($curl_connection, CURLOPT_PROXY, '127.0.0.1:8888');
+
+//set data to be posted
+curl_setopt($curl_connection, CURLOPT_POSTFIELDS, $post_string);
+
+$request_header_info = curl_getinfo($curl_connection, CURLINFO_HEADER_OUT);
+print $post_string;
+print $request_header_info;
+
+
+//perform our request
+$result = curl_exec($curl_connection);
+
+//show information regarding the request
+print_r(curl_getinfo($curl_connection));
+echo curl_errno($curl_connection) . '-' .
+                curl_error($curl_connection);
+
+
+//END POST TO INFUSIONSOFT
 
 /*Backfill CSV files to keep them consistent before we deprecate them*/
 if (isset($_POST["altemail"])) {$altemail=$_POST["altemail"];}  else{$altemail= " ";}
@@ -667,6 +766,7 @@ curl_close($curl2);
  * Insert the values into the database
  */
 
+ 
 //donor_contact table
 $result = $db -> query("INSERT INTO `donor_contact` (
 			`donor_first_name`,

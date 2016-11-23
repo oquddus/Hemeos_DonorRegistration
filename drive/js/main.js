@@ -88,6 +88,7 @@ $(document).ready(function(){
 		}
 	});
 	
+	//Validator Messages
 	jQuery.extend(jQuery.validator.messages, {
 	    required: "*This field is required",
 	    remote: "Please fix this field.",
@@ -127,6 +128,24 @@ $(document).ready(function(){
           return false;
         }});
     
+    //jQuery plugin to prevent double submission of forms
+    jQuery.fn.preventDoubleSubmission = function () {
+        $(this).on('submit', function (e) {
+            var $form = $(this);
+            if ($form.data('submitted') === true) {
+                // Previously submitted - don't submit again
+                alert('Form already submitted. Please wait.');
+                e.preventDefault();
+            } else {
+                // Mark it so that the next submit can be ignored
+                if($form.valid()) {
+                    $form.data('submitted', true);
+                }
+            }
+        });
+        // Keep chainability
+        return this;
+    };
 
 	//Hidden Steps
 	$('#step2').hide();
@@ -171,6 +190,11 @@ $(document).ready(function(){
 	$('.popup').click(function(){
 		$("#terms").scrollTop("0");
 		$("#privacy").scrollTop("0");
+	});
+	
+	$('#submit').click(function(){
+	    //Prevent Double Submissions
+	    $("#hemeosform").preventDoubleSubmission();
 	});
 });
 

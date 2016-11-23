@@ -106,23 +106,23 @@ class Db {
 }
 
 
-function fullescape($in) 
-{ 
-  $out = ''; 
-  for ($i=0;$i<strlen($in);$i++) 
-  { 
-    $hex = dechex(ord($in[$i])); 
-    if ($hex=='') 
-       $out = $out.urlencode($in[$i]); 
-    else 
-       $out = $out .'%'.((strlen($hex)==1) ? ('0'.strtoupper($hex)):(strtoupper($hex))); 
-  } 
-  $out = str_replace('+','%20',$out); 
-  $out = str_replace('_','%5F',$out); 
-  $out = str_replace('.','%2E',$out); 
-  $out = str_replace('-','%2D',$out); 
-  return $out; 
-} 
+function fullescape($in)
+{
+  $out = '';
+  for ($i=0;$i<strlen($in);$i++)
+  {
+    $hex = dechex(ord($in[$i]));
+    if ($hex=='')
+       $out = $out.urlencode($in[$i]);
+    else
+       $out = $out .'%'.((strlen($hex)==1) ? ('0'.strtoupper($hex)):(strtoupper($hex)));
+  }
+  $out = str_replace('+','%20',$out);
+  $out = str_replace('_','%5F',$out);
+  $out = str_replace('.','%2E',$out);
+  $out = str_replace('-','%2D',$out);
+  return $out;
+}
 
 // Create database object
 $db = new Db();
@@ -218,7 +218,7 @@ $barcode = $db -> quote($_POST['barcode']); //Only for drive registration
  * @param   date of birth('Format:yyyy-mm-dd').
  * @return  age based on date of birth
  */
- 
+
 function ageCalculator($dob){
 	if(!empty($dob)){
 		$birthdate = new DateTime($dob);
@@ -230,6 +230,7 @@ function ageCalculator($dob){
 	}
 }
 
+
 if (isset($_POST["dob"])) {$dob2=$_POST["dob"];}  else{$dob2= " ";}
 $age = ageCalculator($dob2);
 
@@ -239,26 +240,27 @@ if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
 $bmi = 703*($weight2/pow((int)$height2,2));
 
 /*Determine Demographic Eligibility*/
-if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) {
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) || ($registry == 0){
     $registry_ind = TRUE;
 } else {
 	$registry_ind = FALSE;
 }
 
-if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) {
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) || ((strpos($ethnicity, 'other') !== false){
     $ethnicity_ind = TRUE;
 } else {
 	$ethnicity_ind = FALSE;
 }
 
 
-if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $asthma == 'no' && $diabetes == 'no' && $heartdisease == 'no' && $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
+if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $diabetes == 'no' && $heartdisease == 'no'
+&& $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
 	$medical_eligible = 1;
 } else {
 	$medical_eligible = 0;
 }
 
-if (18 <= $age && $age <= 29 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
+if (18 <= $age && $age <= 30 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
 	$demographic_eligible = 1;
 } else {
 	$demographic_eligible = 0;

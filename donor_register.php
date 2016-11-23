@@ -216,26 +216,27 @@ if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
 $bmi = 703*($weight2/pow((int)$height2,2));
 
 /*Determine Demographic Eligibility*/
-if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) {
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) || ($registry == 0){
     $registry_ind = TRUE;
 } else {
 	$registry_ind = FALSE;
 }
 
-if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) {
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) || ((strpos($ethnicity, 'other') !== false){
     $ethnicity_ind = TRUE;
 } else {
 	$ethnicity_ind = FALSE;
 }
 
 
-if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $asthma == 'no' && $diabetes == 'no' && $heartdisease == 'no' && $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
+if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $diabetes == 'no' && $heartdisease == 'no'
+&& $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
 	$medical_eligible = 1;
 } else {
 	$medical_eligible = 0;
 }
 
-if (18 <= $age && $age <= 29 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
+if (18 <= $age && $age <= 30 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
 	$demographic_eligible = 1;
 } else {
 	$demographic_eligible = 0;
@@ -766,7 +767,7 @@ curl_close($curl2);
  * Insert the values into the database
  */
 
- 
+
 //donor_contact table
 $result = $db -> query("INSERT INTO `donor_contact` (
 			`donor_first_name`,

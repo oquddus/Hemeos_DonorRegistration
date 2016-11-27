@@ -2,9 +2,11 @@
 <?php
 
 //Initial Error Checking
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 date_default_timezone_set('UTC');
 
 class Db {
@@ -240,13 +242,13 @@ if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
 $bmi = 703*($weight2/pow((int)$height2,2));
 
 /*Determine Demographic Eligibility*/
-if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) || ($registry == 0){
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false) || ($registry == 0)){
     $registry_ind = TRUE;
 } else {
 	$registry_ind = FALSE;
 }
 
-if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) || ((strpos($ethnicity, 'other') !== false){
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false) || (strpos($ethnicity, 'other') !== false)){
     $ethnicity_ind = TRUE;
 } else {
 	$ethnicity_ind = FALSE;

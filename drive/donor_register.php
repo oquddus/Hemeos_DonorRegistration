@@ -2,9 +2,11 @@
 <?php
 
 //Initial Error Checking
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 date_default_timezone_set('UTC');
 
 class Db {
@@ -240,13 +242,13 @@ if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
 $bmi = 703*($weight2/pow((int)$height2,2));
 
 /*Determine Demographic Eligibility*/
-if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) || ($registry == 0){
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false) || ($registry == 0)){
     $registry_ind = TRUE;
 } else {
 	$registry_ind = FALSE;
 }
 
-if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) || ((strpos($ethnicity, 'other') !== false){
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false) || (strpos($ethnicity, 'other') !== false)){
     $ethnicity_ind = TRUE;
 } else {
 	$ethnicity_ind = FALSE;
@@ -339,23 +341,25 @@ $post_string = implode ('&', $post_items);
 //POST TO IN PERSON REGISTRATION URL
 $url = "https://px340.infusionsoft.com/app/form/process/7298b0a588fc59a2e3ffcb9cd1ac56a6";
 
-$header[0] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
-$header[] = "Cache-Control: max-age=0";
-$header[] = "Connection: keep-alive";
-$header[] = "Keep-Alive: 300";
-$header[] = "Accept-Encoding: gzip, deflate, br";
-$header[] = "Accept-Language: en-US,en;q=0.8";
+//$header[0] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+$header[0] = "Cache-Control: max-age=0";
+$header[] = "Connection: close";
+$header[] = "Content-Length: " . strlen($post_string);
+//$header[] = "Connection: keep-alive";
+//$header[] = "Keep-Alive: 300";
+//$header[] = "Accept-Encoding: gzip, deflate, br";
+//$header[] = "Accept-Language: en-US,en;q=0.8";
 
 //set options
 curl_setopt($curl_connection,CURLOPT_URL, $url);
 curl_setopt($curl_connection, CURLOPT_POST, true);
 curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
-curl_setopt($curl_connection, CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+//curl_setopt($curl_connection, CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
 curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl_connection, CURLOPT_HTTPHEADER, $header);
 curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($curl_connection, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($curl_connection, CURLOPT_PROXY, '127.0.0.1:8888');
+//curl_setopt($curl_connection, CURLOPT_PROXY, '172.31.48.121:39126 ');
 
 //set data to be posted
 curl_setopt($curl_connection, CURLOPT_POSTFIELDS, $post_string);
@@ -364,7 +368,6 @@ $request_header_info = curl_getinfo($curl_connection, CURLINFO_HEADER_OUT);
 print $post_string;
 print $request_header_info;
 
-
 //perform our request
 $result = curl_exec($curl_connection);
 
@@ -372,6 +375,14 @@ $result = curl_exec($curl_connection);
 print_r(curl_getinfo($curl_connection));
 echo curl_errno($curl_connection) . '-' .
                 curl_error($curl_connection);
+$responseArr = array();
+$responseArr = json_decode($result);
+print_r($responseArr);
+
+$file = fopen("/var/www/html/drive/CURLRESPONSE".time().".txt", 'w+'); // Create a new file, or overwrite the existing one.
+fwrite($file, $responseArr);
+fclose($file);
+
 
 
 //END POST TO INFUSIONSOFT
@@ -1018,7 +1029,7 @@ else
 
 <!-- WHEN PROCESSING IS COMPLETE TRANSFER REGISTRANTS TO THE THANK YOU PAGE -->
 <script type="text/javascript">
- window.location = "http://www.hemeos.com/thanks.html";
+// window.location = "http://www.hemeos.com/thanks.html";
 </script>
 
 </body>

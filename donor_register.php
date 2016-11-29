@@ -207,6 +207,7 @@ function ageCalculator($dob){
 	}
 }
 
+
 if (isset($_POST["dob"])) {$dob2=$_POST["dob"];}  else{$dob2= " ";}
 $age = ageCalculator($dob2);
 
@@ -216,13 +217,13 @@ if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
 $bmi = 703*($weight2/pow((int)$height2,2));
 
 /*Determine Demographic Eligibility*/
-if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false)) || ($registry == 0){
+if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false) || ($registry == 0)){
     $registry_ind = TRUE;
 } else {
 	$registry_ind = FALSE;
 }
 
-if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false)) || ((strpos($ethnicity, 'other') !== false){
+if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false) || (strpos($ethnicity, 'other') !== false)){
     $ethnicity_ind = TRUE;
 } else {
 	$ethnicity_ind = FALSE;
@@ -335,10 +336,10 @@ curl_setopt($curl_connection, CURLOPT_PROXY, '127.0.0.1:8888');
 curl_setopt($curl_connection, CURLOPT_POSTFIELDS, $post_string);
 
 $request_header_info = curl_getinfo($curl_connection, CURLINFO_HEADER_OUT);
-print $post_string;
-print $request_header_info;
+// print $post_string;
+// print $request_header_info;
 
-
+/*
 //perform our request
 $result = curl_exec($curl_connection);
 
@@ -346,7 +347,7 @@ $result = curl_exec($curl_connection);
 print_r(curl_getinfo($curl_connection));
 echo curl_errno($curl_connection) . '-' .
                 curl_error($curl_connection);
-
+*/
 
 //END POST TO INFUSIONSOFT
 
@@ -577,7 +578,6 @@ fclose ($csv_handler);
 
 /*BEGIN TRANSFERING DATA TO SIMPLYCAST API*/
 /*API DOCUMENTATION CAN BE FOUND HERE: https://app.simplycast.com/?q=api/reference*/
-
 
 
 $curl = curl_init();

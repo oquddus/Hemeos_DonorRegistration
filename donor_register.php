@@ -266,7 +266,6 @@ if (isset($_POST["country"])) {$inf_field_Country=$_POST["country"];}  else{$inf
 if (isset($_POST["dob"])) {$inf_field_Birthday=$_POST["dob"];}  else{$inf_field_Birthday= " ";}
 if (isset($_POST["reg_method"])) {$inf_custom_RegistrationMethod=$_POST["reg_method"];}  else{$inf_custom_RegistrationMethod= " ";}
 
-
 $inf_custom_MedicallyEligible = $medical_eligible;
 $inf_custom_DemographicallyEligible = $demographic_eligible;
 $inf_custom_GeographicallyEligible = $geographic_eligible;
@@ -275,7 +274,6 @@ $inf_custom_GeographicallyEligible = $geographic_eligible;
 $inf_form_xid = '15a6e84d3562cabb0b320dc68a6e1d3c';
 $inf_form_name = 'Online Registration';
 $infusionsoft_version = '1.59.0.51';
-
 
 //create cURL connection
 $curl_connection = curl_init();
@@ -973,6 +971,30 @@ $result = $db -> query("INSERT INTO `donor_agreements` (
 				" . $researchconsent . ",
 				" . $signature . ",
 				" . $donorconsent . "
+			)");
+
+if($result)
+{
+//	echo "donor_agreements table successfully inserted, ";
+}
+else
+{
+//	echo "Error: Insert to donor_agreements table, ";
+//	echo $db->error();
+}
+
+
+//donor_eligibility table
+$result = $db -> query("INSERT INTO `donor_eligibility` (
+			`donor_contact_donor_id`,
+			`med_eligible`,
+			`geo_eligible`,
+			`dem_eligible`
+			)
+		VALUES (" . $last_id . ",
+				" . $medical_eligible . ",
+				" . $geographic_eligible . ",
+				" . $demographic_eligible . "
 			)");
 
 if($result)

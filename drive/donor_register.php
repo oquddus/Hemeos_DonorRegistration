@@ -303,7 +303,6 @@ $inf_form_xid = '7298b0a588fc59a2e3ffcb9cd1ac56a6';
 $inf_form_name = 'In Person Registration';
 $infusionsoft_version = '1.59.0.51';
 
-
 //create cURL connection
 $curl_connection = curl_init();
 
@@ -353,13 +352,28 @@ $header[] = "Content-Length: " . strlen($post_string);
 //set options
 curl_setopt($curl_connection,CURLOPT_URL, $url);
 curl_setopt($curl_connection, CURLOPT_POST, true);
-curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
-//curl_setopt($curl_connection, CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
-curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 60);
+curl_setopt($curl_connection, CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl_connection, CURLOPT_HEADER, 1);
 curl_setopt($curl_connection, CURLOPT_HTTPHEADER, $header);
-curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($curl_connection, CURLOPT_SSLVERSION, 6);
 curl_setopt($curl_connection, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($curl_connection, CURLOPT_COOKIESESSION, TRUE);
+curl_setopt($curl_connection, CURLOPT_FRESH_CONNECT, 1);
+
+
 //curl_setopt($curl_connection, CURLOPT_PROXY, '172.31.48.121:39126 ');
+
+// CURLOPT_VERBOSE: TRUE to output verbose information. Writes output to STDERR,
+// or the file specified using CURLOPT_STDERR.
+curl_setopt($curl_connection, CURLOPT_VERBOSE, true);
+
+//$verbose = fopen("/var/www/html/drive/INFUSIONresponse".time().".txt", 'w+');
+$verbose = fopen("INFUSIONresponse".time().".txt", 'w+');
+curl_setopt($curl_connection, CURLOPT_STDERR, $verbose);
 
 //set data to be posted
 curl_setopt($curl_connection, CURLOPT_POSTFIELDS, $post_string);
@@ -378,12 +392,12 @@ echo curl_errno($curl_connection) . '-' .
 $responseArr = array();
 $responseArr = json_decode($result);
 print_r($responseArr);
+print $responseArr;
 
-$file = fopen("/var/www/html/drive/CURLRESPONSE".time().".txt", 'w+'); // Create a new file, or overwrite the existing one.
-fwrite($file, $responseArr);
-fclose($file);
-
-
+if(curl_error($curl_connection))
+{
+    echo 'error:' . curl_error($curl_connection);
+}
 
 //END POST TO INFUSIONSOFT
 
@@ -741,6 +755,14 @@ curl_setopt($curl,CURLOPT_HEADER, false);
 curl_setopt($curl, CURLOPT_PORT, 443);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
+// CURLOPT_VERBOSE: TRUE to output verbose information. Writes output to STDERR,
+// or the file specified using CURLOPT_STDERR.
+curl_setopt($curl, CURLOPT_VERBOSE, true);
+
+$verbose2 = fopen("/var/www/html/drive/SC1response".time().".txt", 'w+');
+//$verbose = fopen("CURLRESPONSE".time().".txt", 'w+');
+curl_setopt($curl, CURLOPT_STDERR, $verbose2);
+
 //SET GET or POST
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($curl, CURLOPT_POST, 1);
@@ -785,6 +807,14 @@ curl_setopt($curl2, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl2,CURLOPT_HEADER, false);
 curl_setopt($curl2, CURLOPT_PORT, 443);
 curl_setopt($curl2, CURLOPT_SSL_VERIFYPEER, false);
+
+// CURLOPT_VERBOSE: TRUE to output verbose information. Writes output to STDERR,
+// or the file specified using CURLOPT_STDERR.
+curl_setopt($curl2, CURLOPT_VERBOSE, true);
+
+$verbose3 = fopen("/var/www/html/drive/SC2response".time().".txt", 'w+');
+//$verbose = fopen("CURLRESPONSE".time().".txt", 'w+');
+curl_setopt($curl2, CURLOPT_STDERR, $verbose3);
 
 //SET GET or POST
 curl_setopt($curl2, CURLOPT_CUSTOMREQUEST, "POST");
@@ -1013,6 +1043,29 @@ $result = $db -> query("INSERT INTO `donor_agreements` (
 				" . $researchconsent . ",
 				" . $signature . ",
 				" . $donorconsent . "
+			)");
+
+if($result)
+{
+//	echo "donor_agreements table successfully inserted, ";
+}
+else
+{
+//	echo "Error: Insert to donor_agreements table, ";
+//	echo $db->error();
+}
+
+//donor_eligibility table
+$result = $db -> query("INSERT INTO `donor_eligibility` (
+			`donor_contact_donor_id`,
+			`med_eligible`,
+			`geo_eligible`,
+			`dem_eligible`
+			)
+		VALUES (" . $last_id . ",
+				" . $medical_eligible . ",
+				" . $geographic_eligible . ",
+				" . $demographic_eligible . "
 			)");
 
 if($result)

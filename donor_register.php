@@ -286,13 +286,13 @@ class Db {
 			'_GeographicallyEligible' => 	$geographic_eligible
 	);
 	
-	$tagId= 154;
-	//$campaignId=3;
+	$tagId1= 154;
+	$tagId2= 156;
 	$dupCheckType= 'EmailAndName';
 	
 	$returnID= $infusionsoft->contacts()-> addWithDupCheck($contact, $dupCheckType);
-	$infusionsoft->contacts()->addToGroup($returnID, $tagId);
-	//$infusionsoft->contacts()->addToCampaign($returnID, $campaignId);
+	$infusionsoft->contacts()->addToGroup($returnID, $tagId1);
+	$infusionsoft->contacts()->addToGroup($returnID, $tagId2);
 
 	/**
 	 * Insert the values into the database

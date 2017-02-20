@@ -536,6 +536,225 @@ class Db {
 		//	echo $db->error();
 		}
 */
+	
+	/*Backfill CSV files to keep them consistent before we deprecate them*/
+	if (isset($_POST["altemail"])) {$altemail=$_POST["altemail"];}  else{$altemail= " ";}
+	if (isset($_POST["agreement1"])) {$agreement1=$_POST["agreement1"];}  else{$agreement1= " ";}
+	if (isset($_POST["agreement2"])) {$agreement2=$_POST["agreement2"];}  else{$agreement2= " ";}
+	if (isset($_POST["agreement3"])) {$agreement3=$_POST["agreement3"];}  else{$agreement3= " ";}
+	if (isset($_POST["agreement4"])) {$agreement4=$_POST["agreement4"];}  else{$agreement4= " ";}
+	if (isset($_POST["agreement5"])) {$agreement5=$_POST["agreement5"];}  else{$agreement5= " ";}
+	if (isset($_POST["lang"])) {$lang=$_POST["lang"];}  else{$lang= " ";}
+	if (isset($_POST["othercancer"])) {$othercancer=$_POST["othercancer"];}  else{$othercancer= " ";}
+	if (isset($_POST["othermed"])) {$othermed=$_POST["othermed"];}  else{$othermed= " ";}
+	if (isset($_POST["othercholesterol"])) {$othercholesterol=$_POST["othercholesterol"];}  else{$othercholesterol= " ";}
+	if (isset($_POST["bloodpressure"])) {$bloodpressure=$_POST["bloodpressure"];}  else{$bloodpressure= " ";}
+	if (isset($_POST["lupus"])) {$lupus=$_POST["lupus"];}  else{$lupus= " ";}
+	if (isset($_POST["psoriasis"])) {$psoriasis=$_POST["psoriasis"];}  else{$psoriasis= " ";}
+	if (isset($_POST["sjogrens"])) {$sjogrens=$_POST["sjogrens"];}  else{$sjogrens= " ";}
+	if (isset($_POST["sclerosis"])) {$sclerosis=$_POST["sclerosis"];}  else{$sclerosis= " ";}
+	if (isset($_POST["fibromyalgia"])) {$fibromyalgia=$_POST["fibromyalgia"];}  else{$fibromyalgia= " ";}
+	if (isset($_POST["addinsons"])) {$addinsons=$_POST["addinsons"];}  else{$addinsons= " ";}
+	if (isset($_POST["thyroid"])) {$thyroid=$_POST["thyroid"];}  else{$thyroid= " ";}
+	if (isset($_POST["cirrhosis"])) {$cirrhosis=$_POST["cirrhosis"];}  else{$cirrhosis= " ";}
+	if (isset($_POST["ankylosing"])) {$ankylosing=$_POST["ankylosing"];}  else{$ankylosing= " ";}
+	if (isset($_POST["hiv"])) {$hiv=$_POST["hiv"];}  else{$hiv= " ";}
+	if (isset($_POST["hepatitis"])) {$hepatitis=$_POST["hepatitis"];}  else{$hepatitis= " ";}
+	if (isset($_POST["otherallergies"])) {$otherallergies=$_POST["otherallergies"];}  else{$otherallergies= " ";}
+	if (isset($_POST["concussiondate"])) {$concussiondate=$_POST["concussiondate"];}  else{$concussiondate= " ";}
+	if (isset($_POST["followup"])) {$followup=$_POST["followup"];}  else{$followup= " ";}
+	if (isset($_POST["signature1"])) {$signature1=$_POST["signature1"];}  else{$signature1= " ";}
+	if (isset($_POST["signature2"])) {$signature2=$_POST["signature2"];}  else{$signature2= " ";}
+	if (isset($_POST["otherdisease"])) {$otherdisease=$_POST["otherdisease"];}  else{$otherdisease= " ";}
+	
+	/*ORGANIZE FIELDS INTO A DATA ARRAY FOR CSV DUMP*/
+	$data_array = array (
+			$fname,
+			$lname,
+			$email,
+			$phone,
+			$street1,
+			$street2,
+			$city,
+			$state,
+			$country,
+			$zip,
+			$altfname,
+			$altlname,
+			$altemail,
+			$altphone,
+			$altrelationship,
+			$agreement1,
+			$agreement2,
+			$agreement3,
+			$agreement4,
+			$agreement5,
+			$dob,
+			$sex,
+			$height,
+			$weight,
+			$lang,
+			$reference,
+			$ethnicity,
+			$registry,
+			$tia,
+			$cancer,
+			$othercancer,
+			$therapy,
+			$pain,
+			$medication,
+			$othermed,
+			$depression,
+			$autism,
+			$add,
+			$cholesterol,
+			$othercholesterol,
+			$bloodpressure,
+			$infectiousdisease,
+			$otherdisease,
+			$heartdisease,
+			$lupus,
+			$psoriasis,
+			$arthritis,
+			$sjogrens,
+			$sclerosis,
+			$fibromyalgia,
+			$chronicfatigue,
+			$addinsons,
+			$thyroid,
+			$seizure,
+			$kidneystones,
+			$asthma,
+			$cirrhosis,
+			$ankylosing,
+			$hiv,
+			$hepatitis,
+			$diabetes,
+			$aneurysm,
+			$bloodclot,
+			$hemophilia,
+			$anemia,
+			$allergies,
+			$otherallergies,
+			$smoker,
+			$alzheimer,
+			$concussion,
+			$concussiondate,
+			$otherconditions,
+			$prescriptionmeds,
+			$followup,
+			$researchconsent,
+			$signature1,
+			$donorconsent,
+			$signature2,
+			$age,
+			$bmi,
+			$reg_method,
+			$pname,
+			$autoimmune
+	);
+	
+	/*CREATE HEADERS FOR CSV FILE*/
+	$csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,altlname,altemail,altphone,altrelationship,agreement1,agreement2,agreement3,agreement4,agreement5,dob,sex,height,weight,lang,reference,ethnicity,registry,tia,cancer,othercancer,therapy,pain,medication,othermed,depression,autism,add,cholesterol,othercholesterol,bloodpressure,infectiousdisease,otherdisease,heartdisease,lupus,psoriasis,arthritis,sjogrens,sclerosis,fibromyalgia,chronicfatigue,addinsons,thyroid,seizure,kidneystones,asthma,cirrhosis,ankylosing,hiv,hepatitis,diabetes,aneurysm,bloodclot,hemophilia,anemia,allergies,otherallergies,smoker,alzheimer,concussion,concussiondate,otherconditions,prescriptionmeds,followup,researchconsent,signature1,donorconsent,signature2,age,bmi,reg_method,pname,autoimmune \n";//Column headers
+	//foreach ($data_array as $record){
+	
+	/*ADD DATA TO $csv VARIABLE*/
+	$csv.= $data_array[0] .
+	','.$data_array[1] .
+	','.$data_array[2] .
+	','.$data_array[3] .
+	','.$data_array[4] .
+	','.$data_array[5] .
+	','.$data_array[6] .
+	','.$data_array[7] .
+	','.$data_array[8] .
+	','.$data_array[9] .
+	','.$data_array[10] .
+	','.$data_array[11] .
+	','.$data_array[12] .
+	','.$data_array[13] .
+	','.$data_array[14] .
+	','.$data_array[15] .
+	','.$data_array[16] .
+	','.$data_array[17] .
+	','.$data_array[18] .
+	','.$data_array[19] .
+	','.$data_array[20] .
+	','.$data_array[21] .
+	','.$data_array[22] .
+	','.$data_array[23] .
+	','.$data_array[24] .
+	','.$data_array[25] .
+	','.$data_array[26] .
+	','.$data_array[27] .
+	','.$data_array[28] .
+	','.$data_array[29] .
+	','.$data_array[30] .
+	','.$data_array[31] .
+	','.$data_array[32] .
+	','.$data_array[33] .
+	','.$data_array[34] .
+	','.$data_array[35] .
+	','.$data_array[36] .
+	','.$data_array[37] .
+	','.$data_array[38] .
+	','.$data_array[39] .
+	','.$data_array[40] .
+	','.$data_array[41] .
+	','.$data_array[42] .
+	','.$data_array[43] .
+	','.$data_array[44] .
+	','.$data_array[45] .
+	','.$data_array[46] .
+	','.$data_array[47] .
+	','.$data_array[48] .
+	','.$data_array[49] .
+	','.$data_array[50] .
+	','.$data_array[51] .
+	','.$data_array[52] .
+	','.$data_array[53] .
+	','.$data_array[54] .
+	','.$data_array[55] .
+	','.$data_array[56] .
+	','.$data_array[57] .
+	','.$data_array[58] .
+	','.$data_array[59] .
+	','.$data_array[60] .
+	','.$data_array[61] .
+	','.$data_array[62] .
+	','.$data_array[63] .
+	','.$data_array[64] .
+	','.$data_array[65] .
+	','.$data_array[66] .
+	','.$data_array[67] .
+	','.$data_array[68] .
+	','.$data_array[69] .
+	','.$data_array[70] .
+	','.$data_array[71] .
+	','.$data_array[72] .
+	','.$data_array[73] .
+	','.$data_array[74] .
+	','.$data_array[75] .
+	','.$data_array[76] .
+	','.$data_array[77] .
+	','.$data_array[78] .
+	','.$data_array[79] .
+	','.$data_array[80] .
+	','.$data_array[81] .
+	','.$data_array[82] .
+	"\n";
+	//Append data to csv
+	//    }
+	
+	
+	/*CREATE CSV HANDLER OBJECT WITH FOPEN - USE time() TO MAKE EACH FILE UNIQUE*/
+	$csv_handler = fopen ("/var/www/html/test/csvfile".time().".csv",'w');
+	
+	/*WRITE DATA TO CSV FILE AND CLOSE THE FILE*/
+	fwrite ($csv_handler,$csv);
+	fclose ($csv_handler);
+	
+	//CSV END
 ?>
 
 <!-- WHEN PROCESSING IS COMPLETE TRANSFER REGISTRANTS TO THE THANK YOU PAGE -->

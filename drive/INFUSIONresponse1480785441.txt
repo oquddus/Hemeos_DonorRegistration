@@ -1,0 +1,41 @@
+*   Trying 192.229.163.225...
+* Connected to px340.infusionsoft.com (192.229.163.225) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: C=US; ST=Arizona; L=Chandler; O=Infusionsoft; OU=Technology; CN=*.infusionsoft.com
+*  start date: Feb  5 00:00:00 2016 GMT
+*  expire date: Feb 13 12:00:00 2019 GMT
+*  subjectAltName: host "px340.infusionsoft.com" matched cert's "*.infusionsoft.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+> POST /app/form/process/7298b0a588fc59a2e3ffcb9cd1ac56a6 HTTP/1.1
+Host: px340.infusionsoft.com
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+Accept: */*
+Cache-Control: max-age=0
+Connection: close
+Content-Length: 630
+Content-Type: application/x-www-form-urlencoded
+
+* upload completely sent off: 630 out of 630 bytes
+< HTTP/1.1 200 OK
+< Cache-Control: no-cache, no-store
+< Content-Language: en-US
+< Content-Type: text/html;charset=UTF-8
+< Date: Sat, 03 Dec 2016 17:17:21 GMT
+< Expires: Sat, 03 Dec 2016 17:17:20 GMT
+< Pragma: no-cache
+< Server: Apache-Coyote/1.1
+< Set-Cookie: contactId=238
+< Set-Cookie: linkedJumpLog=""; Expires=Mon, 12-Aug-2030 17:17:21 GMT; Path=/
+< Set-Cookie: jumpLog=""; Expires=Mon, 12-Aug-2030 17:17:21 GMT; Path=/
+< Set-Cookie: JSESSIONID=6A9900D22DA0EDFF25D7BC03C8625A0E; Path=/; Secure; HttpOnly
+< Set-Cookie: app-lb=!dcArUP2umrrcBPao5jOubDF73jfI74+xcao6q7mt45NoZLIJfTCBqG18vPTCXlz+7T/VBQHezNrrhv6mV4JH1LqNm+45IwwSD4lh/V5PplFAf0pV8Whz/+FbaMZJLGLGZqxHjSCVKWsZfkSP3t6cJtmqP6F9OMM=; path=/
+< Vary: Accept-Encoding
+< Transfer-Encoding: chunked
+< Connection: close
+< 
+* Closing connection 0

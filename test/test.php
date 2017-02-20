@@ -106,11 +106,11 @@ class Db {
 
 	// Create database object
 	$db = new Db();
-	
+
 	/**
 	 * Quote and escape registration form submitted values
 	 */
-	
+
 	//Step1
 	//Contact Information
 	$fname = $db -> quote($_POST['fname']);
@@ -140,7 +140,7 @@ class Db {
 	$altfname = $db -> quote($_POST['altfname']);
 	$altlname = $db -> quote($_POST['altlname']);
 	$altphone = $db -> quote($_POST['altphone']);
-	
+
 	//Step 2
 	$tia = $db -> quote($_POST['tia']);
 	$cancer = $db -> quote($_POST['cancer']);
@@ -178,15 +178,15 @@ class Db {
 	$alzheimer = $db -> quote($_POST['alzheimer']);
 	$otherconditions = $db -> quote($_POST['otherconditions']);
 	$prescriptionmeds = $db -> quote($_POST['prescriptionmeds']);
-	
+
 	//Step 3
 	$donorconsent = $db -> quote($_POST['donorconsent']);
 	$researchconsent = $db -> quote($_POST['researchconsent']);
 	$termsagreement = $db -> quote($_POST['termsagreement']);
 	$signature = $db -> quote($_POST['signature']);
 	$reg_method = $db -> quote($_POST['reg_method']);
-	
-	
+
+
 	/**
 	 * Simple PHP age Calculator
 	 *
@@ -204,42 +204,42 @@ class Db {
 			return 0;
 		}
 	}
-	
+
 	if (isset($_POST["dob"])) {$dob2=$_POST["dob"];}  else{$dob2= " ";}
 	$age = ageCalculator($dob2);
-	
+
 	if (isset($_POST["height"])) {$height2=$_POST["height"];}  else{$height2= " ";}
 	if (isset($_POST["weight"])) {$weight2=$_POST["weight"];}  else{$weight2= " ";}
-	
+
 	$bmi = 703*($weight2/pow((int)$height2,2));
-	
+
 	/*Determine Demographic Eligibility*/
 	if ((strpos($registry, 'No Registry') !== false) || (strpos($registry, 'Not Sure') !== false) || ($registry == 0)){
 		$registry_ind = TRUE;
 	} else {
 		$registry_ind = FALSE;
 	}
-	
+
 	if ((strpos($ethnicity, 'african') !== false) || (strpos($ethnicity, 'africanamerican') !== false) || (strpos($ethnicity, 'other') !== false)){
 		$ethnicity_ind = TRUE;
 	} else {
 		$ethnicity_ind = FALSE;
 	}
-	
-	
-	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $diabetes == 'no' && $heartdisease == 'no'
-	&& $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
+
+
+	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 0 && $hepatitis == 0 && $diabetes == 0 && $heartdisease == 0
+	&& $cirrhosis == 0 && $tia == 0 && $pain == 0 && $seizure == 0 && $hemophilia == 0) {
 		$medical_eligible = 1;
 	} else {
 		$medical_eligible = 0;
 	}
-	
+
 	if (18 <= $age && $age <= 30 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
 		$demographic_eligible = 1;
 	} else {
 		$demographic_eligible = 0;
 	}
-	
+
 	if (in_array($state,array('DC','VA','MD'))) {
 		$geographic_eligible = 1;
 	} else {
@@ -251,22 +251,22 @@ class Db {
 	 *
 	 * Post donor information to Infusionsoft API
 	 */
-	
+
 	require_once '../vendor/autoload.php';
-	
+
 	$infusionsoft = new Infusionsoft\Infusionsoft(array(
 			'clientId'     => 'nwkq7y5mzjbr2cgwkj4ub6uy',
 			'clientSecret' => '9qGdApUCU5',
 			'redirectUri'  => 'https://register.hemeos.com/test/',
 	));
-	
+
 	// Retrieve serialized token from database
 	$search = $db -> select("SELECT `token` FROM `infusionsoft_token` WHERE `id_infusionsoft_token` = '1'");
 	$token = $search[0]['token'];
-	
+
 	$infusionsoft->setToken(unserialize( base64_decode($token)));
 	//var_dump($infusionsoft);
-	
+
 	$contact = array(
 			'FirstName' => 		$_POST['fname'],
 			'Nickname' => 		$_POST['pname'],
@@ -285,10 +285,10 @@ class Db {
 			'_DemographicallyEligible' => 	$demographic_eligible,
 			'_GeographicallyEligible' => 	$geographic_eligible
 	);
-	
+
 	$tagId= 158;
 	$dupCheckType= 'EmailAndName';
-	
+
 	$returnID= $infusionsoft->contacts()-> addWithDupCheck($contact, $dupCheckType);
 	$infusionsoft->contacts()->addToGroup($returnID, $tagId);
 
@@ -296,7 +296,7 @@ class Db {
 	/**
 	 * Insert the values into the database
 	 */
-/*	
+/*
 	//donor_contact table
 	$result = $db -> query("INSERT INTO `donor_contact` (
 				`donor_first_name`,
@@ -536,7 +536,7 @@ class Db {
 		//	echo $db->error();
 		}
 */
-	
+
 	/*Backfill CSV files to keep them consistent before we deprecate them*/
 	if (isset($_POST["altemail"])) {$altemail=$_POST["altemail"];}  else{$altemail= " ";}
 	if (isset($_POST["agreement1"])) {$agreement1=$_POST["agreement1"];}  else{$agreement1= " ";}
@@ -566,7 +566,7 @@ class Db {
 	if (isset($_POST["signature1"])) {$signature1=$_POST["signature1"];}  else{$signature1= " ";}
 	if (isset($_POST["signature2"])) {$signature2=$_POST["signature2"];}  else{$signature2= " ";}
 	if (isset($_POST["otherdisease"])) {$otherdisease=$_POST["otherdisease"];}  else{$otherdisease= " ";}
-	
+
 	/*ORGANIZE FIELDS INTO A DATA ARRAY FOR CSV DUMP*/
 	$data_array = array (
 			$fname,
@@ -653,11 +653,11 @@ class Db {
 			$pname,
 			$autoimmune
 	);
-	
+
 	/*CREATE HEADERS FOR CSV FILE*/
 	$csv = "fname,lname,email,phone,street1,street2,city,state,country,zip,altfname,altlname,altemail,altphone,altrelationship,agreement1,agreement2,agreement3,agreement4,agreement5,dob,sex,height,weight,lang,reference,ethnicity,registry,tia,cancer,othercancer,therapy,pain,medication,othermed,depression,autism,add,cholesterol,othercholesterol,bloodpressure,infectiousdisease,otherdisease,heartdisease,lupus,psoriasis,arthritis,sjogrens,sclerosis,fibromyalgia,chronicfatigue,addinsons,thyroid,seizure,kidneystones,asthma,cirrhosis,ankylosing,hiv,hepatitis,diabetes,aneurysm,bloodclot,hemophilia,anemia,allergies,otherallergies,smoker,alzheimer,concussion,concussiondate,otherconditions,prescriptionmeds,followup,researchconsent,signature1,donorconsent,signature2,age,bmi,reg_method,pname,autoimmune \n";//Column headers
 	//foreach ($data_array as $record){
-	
+
 	/*ADD DATA TO $csv VARIABLE*/
 	$csv.= $data_array[0] .
 	','.$data_array[1] .
@@ -745,15 +745,15 @@ class Db {
 	"\n";
 	//Append data to csv
 	//    }
-	
-	
+
+
 	/*CREATE CSV HANDLER OBJECT WITH FOPEN - USE time() TO MAKE EACH FILE UNIQUE*/
 	$csv_handler = fopen ("/var/www/html/test/csvfile".time().".csv",'w');
-	
+
 	/*WRITE DATA TO CSV FILE AND CLOSE THE FILE*/
 	fwrite ($csv_handler,$csv);
 	fclose ($csv_handler);
-	
+
 	//CSV END
 ?>
 

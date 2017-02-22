@@ -227,8 +227,8 @@ class Db {
 	}
 
 
-	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 0 && $hepatitis == 0 && $diabetes == 0 && $heartdisease == 0
-	&& $cirrhosis == 0 && $tia == 0 && $pain == 0 && $seizure == 0 && $hemophilia == 0) {
+	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $infectiousdisease == 0 && $diabetes == 0 && $heartdisease == 0
+	&& $tia == 0 && $pain == 0 && $seizure == 0 && $hemophilia == 0) {
 		$medical_eligible = 1;
 	} else {
 		$medical_eligible = 0;
@@ -413,7 +413,7 @@ class Db {
 			`add`,
 			`cholesterol`,
 			`infectious_disease`,
-			`infectious_disease_info`,
+			`infectiousdisease_info`,
 			`heart_disease`,
 			`heart_disease_info`,
 			`arthritis`,

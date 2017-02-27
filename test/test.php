@@ -240,10 +240,10 @@ class Db {
 		$demographic_eligible = 0;
 	}
 
-	if (in_array($state,array('DC','VA','MD'))) {
-		$geographic_eligible = 1;
-	} else {
+	if (in_array($state,array("NY"))) {
 		$geographic_eligible = 0;
+	} else {
+		$geographic_eligible = 1;
 	}
 
 	/**

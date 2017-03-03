@@ -227,24 +227,25 @@ class Db {
 	}
 	
 	
-	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $hiv == 'no' && $hepatitis == 'no' && $diabetes == 'no' && $heartdisease == 'no'
-	&& $cirrhosis == 'no' && $tia == 'no' && $pain == 'no' && $seizure == 'no' && $hemophilia == 'no') {
-		$medical_eligible = 1;
-	} else {
-		$medical_eligible = 0;
-	}
+	if (18 <= $age && $age <=40 && 58 <= $height && 110 <= $weight && $bmi <= 40 && $infectiousdisease == 0 && $diabetes == 0 && $heartdisease == 0
+			&& $tia == 0 && $pain == 0 && $seizure == 0 && $hemophilia == 0) {
+				$medical_eligible = 1;
+			} else {
+				$medical_eligible = 0;
+			}
 	
-	if (18 <= $age && $age <= 30 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
-		$demographic_eligible = 1;
-	} else {
-		$demographic_eligible = 0;
-	}
+			if (18 <= $age && $age <= 30 && $ethnicity_ind == TRUE && $registry_ind == TRUE ) {
+				$demographic_eligible = 1;
+			} else {
+				$demographic_eligible = 0;
+			}
 	
-	if (in_array($state,array('DC','VA','MD'))) {
-		$geographic_eligible = 1;
-	} else {
-		$geographic_eligible = 0;
-	}
+			if (in_array($state,array("NY"))) {
+				$geographic_eligible = 0;
+			} else {
+				$geographic_eligible = 1;
+			}
+	
 
 	/**
 	 * Infusionsoft
@@ -287,12 +288,13 @@ class Db {
 	);
 	
 	$tagId1= 154;
-	$tagId2= 156;
+	$tagId2= 166;
 	$dupCheckType= 'EmailAndName';
 	
 	$returnID= $infusionsoft->contacts()-> addWithDupCheck($contact, $dupCheckType);
 	$infusionsoft->contacts()->addToGroup($returnID, $tagId1);
 	$infusionsoft->contacts()->addToGroup($returnID, $tagId2);
+	//var_dump($infusionsoft);
 
 	/**
 	 * Insert the values into the database

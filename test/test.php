@@ -2,9 +2,9 @@
 <?php
 
 //Initial Error Checking
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 date_default_timezone_set('UTC');
 
 class Db {
@@ -286,11 +286,12 @@ class Db {
 			'_GeographicallyEligible' => 	$geographic_eligible
 	);
 
-	$tagId= 158;
+	$tagId= 166;
 	$dupCheckType= 'EmailAndName';
 
 	$returnID= $infusionsoft->contacts()-> addWithDupCheck($contact, $dupCheckType);
 	$infusionsoft->contacts()->addToGroup($returnID, $tagId);
+	var_dump($infusionsoft);
 
 
 	/**
